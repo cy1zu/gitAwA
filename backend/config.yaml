@@ -1,0 +1,22 @@
+name: "gitawa"
+mode: "dev"
+port: 20721
+version: "0.0.1"
+start_time: "2024-10-07"
+machine_id: 1
+
+log:
+  level: "debug"
+  mode: "dev"
+  filename: "gitawa.log"
+  max_size: 200
+  max_age: 30
+  max_backups: 5
+postgres:
+  host: "127.0.0.1"
+  port: 5762
+  user: "postgres"
+  password: "123456"
+  database: "gitawa_db"
+  max_conns: 200
+  max_idle: 50
