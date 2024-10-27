@@ -8,7 +8,10 @@ import (
 )
 
 func TestFinalDevelopers(t *testing.T) {
-	res, _ := fetchers.GetUserInfo("fuhaoda")
+	res, err := fetchers.GetUserInfo("lightvector")
+	if err != nil {
+		t.Error(err)
+	}
 	data, err := ParseDevelopersData(res)
 	if err != nil {
 		t.Error(err)
@@ -22,7 +25,10 @@ func TestFinalDevelopers(t *testing.T) {
 }
 
 func TestParseDevelopersData(t *testing.T) {
-	res, _ := fetchers.GetUserInfo("fuhaoda")
+	res, err := fetchers.GetUserInfo("lightvector")
+	if err != nil {
+		t.Error(err)
+	}
 	data, err := ParseDevelopersData(res)
 	if err != nil {
 		t.Error(err)

@@ -6,6 +6,8 @@ require (
 	github.com/carlmjohnson/requests v0.24.2
 	github.com/fsnotify/fsnotify v1.7.0
 	github.com/spf13/viper v1.19.0
+	go.uber.org/zap v1.21.0
+	gopkg.in/natefinch/lumberjack.v2 v2.2.1
 )
 
 require (

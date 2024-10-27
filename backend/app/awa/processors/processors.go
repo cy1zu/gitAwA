@@ -3,46 +3,59 @@ package processors
 import (
 	"backend/app/awa/fetchers"
 	"backend/app/models"
-	"fmt"
+	"go.uber.org/zap"
 )
 
 func FinalDevelopers(dev *ParsedDeveloper) (models.Developer, error) {
-	repos := make([]models.Repos, 0, len(*dev.AllRepos))
-	languages := map[string]int64{}
-	for _, repo := range *dev.AllRepos {
-		parsed, err := calculateUserContributions(dev.Login, &repo)
-		if err != nil {
-			return models.Developer{}, err
-		}
-		repos = append(repos, parsed)
-		if parsed.Fork == false {
-			for lang, langSize := range repo.Languages {
-				point := float64(langSize) / float64(repo.Size)
-				if point >= 0.3 {
-					languages[lang] += 1
+	if dev == nil {
+		return models.Developer{}, ErrorGetDeveloperFailed
+	}
+	data := models.Developer{
+		Id:         dev.Id,
+		Login:      dev.Login,
+		Type:       dev.Type,
+		Name:       dev.Name,
+		Company:    dev.Company,
+		Blog:       dev.Blog,
+		Location:   dev.Location,
+		Email:      dev.Email,
+		CreatedAt:  dev.CreatedAt,
+		TalentRank: 0,
+	}
+	if dev.AllRepos != nil {
+		repos := make([]models.Repos, 0, len(*dev.AllRepos))
+		languages := map[string]int64{}
+		for _, repo := range *dev.AllRepos {
+			parsed, err := calculateUserContributions(dev.Login, &repo)
+			if err != nil {
+				zap.L().Error("calculateUserContributions failed", zap.Error(err))
+				zap.L().Debug("calculateUserContributions failed", zap.Error(err),
+					zap.String("githubId", dev.Login),
+					zap.String("repoId", repo.FullName))
+				return models.Developer{}, ErrorCalculateContributionsFailed
+			}
+			repos = append(repos, parsed)
+			if parsed.Fork == false {
+				for lang, langSize := range repo.Languages {
+					point := float64(langSize) / float64(repo.Size)
+					if point >= LanguagesProportion {
+						languages[lang] += 1
+					}
 				}
 			}
 		}
-	}
-	data := models.Developer{
-		Id:               dev.Id,
-		Login:            dev.Login,
-		Type:             dev.Type,
-		Name:             dev.Name,
-		Company:          dev.Company,
-		Blog:             dev.Blog,
-		Location:         dev.Location,
-		Email:            dev.Email,
-		CreatedAt:        dev.CreatedAt,
-		Languages:        languages,
-		ContributedRepos: &repos,
-		TalentRank:       0,
+		data.Languages = languages
+		data.ContributedRepos = &repos
 	}
 	return data, nil
 }
 
 func ParseDevelopersData(dev *fetchers.DeveloperFull) (*ParsedDeveloper, error) {
-	if dev.AllRepos != nil {
+	if dev == nil {
+		zap.L().Error("ParseDevelopersData failed: dev is nil")
+		return &ParsedDeveloper{}, nil
+	}
+	if len(dev.AllRepos) != 0 {
 		removed := removeNoContributionsRepo(dev.AllRepos)
 		dev.AllRepos = removed
 	}
@@ -59,18 +72,33 @@ func ParseDevelopersData(dev *fetchers.DeveloperFull) (*ParsedDeveloper, error) 
 		UpdatedAt: dev.UpdatedAt,
 		AllRepos:  nil,
 	}
-	reposList := make([]ParsedRepos, 0, len(*dev.AllRepos))
+	reposList := make([]ParsedRepos, 0, len(dev.AllRepos))
 
-	for _, repo := range *dev.AllRepos {
+	for _, repo := range dev.AllRepos {
 		if repo.Fork == false {
 			detail, err := fetchers.GetReposDetail(repo.FullName)
 			if err != nil {
-				panic(err)
+				zap.L().Error("fetchers.GetReposDetail failed", zap.Error(err))
+				zap.L().Debug("fetchers.GetReposDetail failed", zap.Error(err),
+					zap.String("githubId", dev.Login),
+					zap.String("repoId", repo.FullName))
+				continue
 			}
 			lang, err := fetchers.GetReposLanguages(repo.FullName)
 			if err != nil {
-				// not do anything
-				panic(err)
+				zap.L().Error("fetchers.GetReposLanguages failed", zap.Error(err))
+				zap.L().Debug("fetchers.GetReposLanguages failed", zap.Error(err),
+					zap.String("githubId", dev.Login),
+					zap.String("repoId", repo.FullName))
+				continue
+			}
+			cons, err := fetchers.GetReposContributors(repo.FullName)
+			if err != nil {
+				zap.L().Error("fetchers.GetReposContributors failed", zap.Error(err))
+				zap.L().Debug("fetchers.GetReposContributors failed", zap.Error(err),
+					zap.String("githubId", dev.Login),
+					zap.String("repoId", repo.FullName))
+				continue
 			}
 			reposList = append(reposList, ParsedRepos{
 				Id:       detail.Id,
@@ -85,34 +113,38 @@ func ParseDevelopersData(dev *fetchers.DeveloperFull) (*ParsedDeveloper, error) 
 				Description:     detail.Description,
 				Fork:            detail.Fork,
 				Languages:       lang,
+				Contributors:    cons,
 				CreatedAt:       detail.CreatedAt,
 				UpdatedAt:       detail.UpdatedAt,
 				PushedAt:        detail.PushedAt,
 				Size:            detail.Size,
 				StargazersCount: detail.StargazersCount,
-				Parent: &models.MiniRepo{
-					Id:              0,
-					FullName:        "",
-					Description:     "",
-					Contributors:    nil,
-					Size:            0,
-					StargazersCount: 0,
-				},
+				Parent:          nil,
 			})
 		} else if repo.Fork == true {
 			detail, err := fetchers.GetReposDetail(repo.FullName)
 			if err != nil {
-				panic(err)
+				zap.L().Error("fetchers.GetReposDetail failed", zap.Error(err))
+				zap.L().Debug("fetchers.GetReposDetail failed", zap.Error(err),
+					zap.String("githubId", dev.Login),
+					zap.String("repoId", repo.FullName))
+				continue
 			}
 			lang, err := fetchers.GetReposLanguages(detail.Parent.FullName)
 			if err != nil {
-				// not do anything
-				panic(err)
+				zap.L().Error("fetchers.GetReposLanguages failed", zap.Error(err))
+				zap.L().Debug("fetchers.GetReposLanguages failed", zap.Error(err),
+					zap.String("githubId", dev.Login),
+					zap.String("repoId", repo.FullName))
+				continue
 			}
 			cons, err := fetchers.GetReposContributors(detail.Parent.FullName)
 			if err != nil {
-				// not do anything
-				panic(err)
+				zap.L().Error("fetchers.GetReposContributors failed", zap.Error(err))
+				zap.L().Debug("fetchers.GetReposContributors failed", zap.Error(err),
+					zap.String("githubId", dev.Login),
+					zap.String("repoId", repo.FullName))
+				continue
 			}
 			reposList = append(reposList, ParsedRepos{
 				Id:       detail.Id,
@@ -127,6 +159,7 @@ func ParseDevelopersData(dev *fetchers.DeveloperFull) (*ParsedDeveloper, error) 
 				Description:     detail.Description,
 				Fork:            detail.Fork,
 				Languages:       lang,
+				Contributors:    cons,
 				CreatedAt:       detail.CreatedAt,
 				UpdatedAt:       detail.UpdatedAt,
 				PushedAt:        detail.PushedAt,
@@ -147,26 +180,14 @@ func ParseDevelopersData(dev *fetchers.DeveloperFull) (*ParsedDeveloper, error) 
 	return data, nil
 }
 
-func removeNoContributionsRepo(dev *[]fetchers.ReposFull) *[]fetchers.ReposFull {
-	parsed := make([]fetchers.ReposFull, 0, len(*dev))
-	for _, repo := range *dev {
-		if repo.StargazersCount != 0 {
+func removeNoContributionsRepo(dev []fetchers.ReposFull) []fetchers.ReposFull {
+	parsed := make([]fetchers.ReposFull, 0, len(dev))
+	for _, repo := range dev {
+		if repo.StargazersCount != 0 || repo.Fork == true {
 			parsed = append(parsed, repo)
-		} else if repo.Fork == true {
-			if repo.Parent == nil {
-				fmt.Printf("repo.Parent == nil, RepoName = %v\n", repo.FullName)
-				continue
-			}
-			par, err := fetchers.GetReposDetail(repo.Parent.FullName)
-			if err != nil {
-				panic(err)
-			}
-			if par.StargazersCount != 0 {
-				parsed = append(parsed, repo)
-			}
 		}
 	}
-	return &parsed
+	return parsed
 }
 
 func calculateUserContributions(githubId string, repo *ParsedRepos) (models.Repos, error) {
