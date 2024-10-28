@@ -4,6 +4,7 @@ port: 20721
 version: "0.0.1"
 start_time: "2024-10-07"
 machine_id: 1
+github_access_token: ""
 
 log:
   level: "debug"
@@ -14,7 +15,7 @@ log:
   max_backups: 5
 postgres:
   host: "127.0.0.1"
-  port: 5762
+  port: 5432
   user: "postgres"
   password: "123456"
   database: "gitawa_db"

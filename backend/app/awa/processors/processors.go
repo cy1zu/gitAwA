@@ -34,15 +34,18 @@ func FinalDevelopers(dev *ParsedDeveloper) (models.Developer, error) {
 					zap.String("repoId", repo.FullName))
 				return models.Developer{}, ErrorCalculateContributionsFailed
 			}
-			repos = append(repos, parsed)
+			if parsed.Contributions != 0 {
+				repos = append(repos, parsed)
+			}
 			if parsed.Fork == false {
 				for lang, langSize := range repo.Languages {
 					point := float64(langSize) / float64(repo.Size)
 					if point >= LanguagesProportion {
-						languages[lang] += 1
+						languages[lang] += langSize
 					}
 				}
 			}
+			data.TalentRank += parsed.TalentScore
 		}
 		data.Languages = languages
 		data.ContributedRepos = &repos
@@ -218,6 +221,7 @@ func calculateUserContributions(githubId string, repo *ParsedRepos) (models.Repo
 			Parent:          repo.Parent,
 			Contributions:   devContribution / allContribution,
 		}
+		data.TalentScore = float64(data.StargazersCount) * data.Contributions
 		return data, nil
 	} else {
 		data := models.Repos{
@@ -237,6 +241,7 @@ func calculateUserContributions(githubId string, repo *ParsedRepos) (models.Repo
 			Parent:          repo.Parent,
 			Contributions:   1.0,
 		}
+		data.TalentScore = float64(data.StargazersCount)
 		return data, nil
 	}
 }

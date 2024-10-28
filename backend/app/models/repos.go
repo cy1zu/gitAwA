@@ -18,6 +18,7 @@ type Repos struct {
 	StargazersCount int              `json:"stargazers_count"`
 	Parent          *MiniRepo        `json:"parent"`
 	Contributions   float64          `json:"contributions,string"`
+	TalentScore     float64          `json:"talent_score,string"`
 }
 
 type MiniRepo struct {
