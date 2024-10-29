@@ -26,14 +26,15 @@ type MiniDeveloper struct {
 }
 
 type DeveloperStored struct {
-	Id         int       `json:"id"`
-	Login      string    `json:"login"`
-	Type       string    `json:"type"`
+	Id         int       `json:"id" gorm:"primary_key;AUTO_INCREMENT"`
+	GithubId   int       `json:"github_id" gorm:"not null;unique"`
+	Login      string    `json:"login" gorm:"not null;index:idx_github_login,type:hash"`
+	Type       string    `json:"type" gorm:"not null"`
 	Name       string    `json:"name"`
-	Company    string    `json:"company"`
-	Blog       string    `json:"blog"`
-	Location   string    `json:"location"`
-	Email      string    `json:"email"`
-	CreatedAt  time.Time `json:"created_at"`
-	TalentRank float64   `json:"talent_rank,string"`
+	Company    *string   `json:"company"`
+	Blog       *string   `json:"blog"`
+	Location   *string   `json:"location"`
+	Email      *string   `json:"email"`
+	CreatedAt  time.Time `json:"created_at" gorm:"not null;index:idx_created_at,type:btree"`
+	TalentRank float64   `json:"talent_rank,string" gorm:"default:0;index:idx_talent_rank,type:btree"`
 }

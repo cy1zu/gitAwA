@@ -30,13 +30,16 @@ type LogConfig struct {
 }
 
 type PostgresConfig struct {
-	Host     string `mapstructure:"host"`
-	Port     string `mapstructure:"port"`
-	User     string `mapstructure:"user"`
-	Password string `mapstructure:"password"`
-	Database string `mapstructure:"database"`
-	MaxConns int    `mapstructure:"max_conns"`
-	MaxIdle  int    `mapstructure:"max_idle"`
+	Using     bool   `mapstructure:"using"`
+	Installed bool   `mapstructure:"installed"`
+	SSLMode   string `mapstructure:"ssl_mode"`
+	Host      string `mapstructure:"host"`
+	Port      string `mapstructure:"port"`
+	User      string `mapstructure:"user"`
+	Password  string `mapstructure:"password"`
+	Database  string `mapstructure:"database"`
+	MaxConns  int    `mapstructure:"max_conns"`
+	MaxIdle   int    `mapstructure:"max_idle"`
 }
 
 func Init() (err error) {

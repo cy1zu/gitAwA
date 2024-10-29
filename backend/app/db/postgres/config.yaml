@@ -20,7 +20,7 @@ postgres:
   port: 5432
   user: "postgres"
   password: "123456"
-  database: "gitawa_db"
+  database: "gitawa_test_db"
   max_conns: 200
   max_idle: 50
 

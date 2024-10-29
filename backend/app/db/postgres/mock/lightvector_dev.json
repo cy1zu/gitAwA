@@ -1,0 +1,603 @@
+{
+  "id": 11942395,
+  "login": "lightvector",
+  "type": "User",
+  "name": "David J Wu",
+  "company": "",
+  "blog": "",
+  "location": "",
+  "email": "",
+  "created_at": "2015-04-14T11:41:53Z",
+  "languages": {
+    "C": 1016432,
+    "C++": 7835554,
+    "CMake": 27897,
+    "CSS": 41866,
+    "Cuda": 114019,
+    "HTML": 72685,
+    "JavaScript": 291225,
+    "Makefile": 461,
+    "OCaml": 86392,
+    "Python": 1139721,
+    "Scala": 472616,
+    "Shell": 61745
+  },
+  "contributed_repos": [
+    {
+      "id": 35457293,
+      "name": "arimaa-server",
+      "full_name": "lightvector/arimaa-server",
+      "private": false,
+      "owner": {
+        "login": "lightvector",
+        "id": 11942395,
+        "type": "User",
+        "nation": "",
+        "contributions": 0
+      },
+      "description": "Arimaa server",
+      "fork": false,
+      "languages": {
+        "CSS": 15051,
+        "HTML": 875,
+        "JavaScript": 189274,
+        "Scala": 313515,
+        "Shell": 377
+      },
+      "created_at": "2015-05-12T00:18:58Z",
+      "updated_at": "2023-12-15T00:31:53Z",
+      "pushed_at": "2016-03-01T00:22:31Z",
+      "size": 37278,
+      "stargazers_count": 9,
+      "parent": null,
+      "contributions": "1",
+      "talent_score": "9"
+    },
+    {
+      "id": 362337282,
+      "name": "arimaasharp",
+      "full_name": "lightvector/arimaasharp",
+      "private": false,
+      "owner": {
+        "login": "lightvector",
+        "id": 11942395,
+        "type": "User",
+        "nation": "",
+        "contributions": 0
+      },
+      "description": "Archive for source code for bot_sharp in Arimaa, which mostly halted dev in 2015.",
+      "fork": false,
+      "languages": {
+        "C": 963958,
+        "C++": 2525468,
+        "Shell": 494
+      },
+      "created_at": "2021-04-28T04:30:07Z",
+      "updated_at": "2024-03-08T13:36:12Z",
+      "pushed_at": "2021-04-28T04:33:55Z",
+      "size": 793,
+      "stargazers_count": 9,
+      "parent": null,
+      "contributions": "1",
+      "talent_score": "9"
+    },
+    {
+      "id": 303161039,
+      "name": "cpp-httplib",
+      "full_name": "lightvector/cpp-httplib",
+      "private": false,
+      "owner": {
+        "login": "lightvector",
+        "id": 11942395,
+        "type": "User",
+        "nation": "",
+        "contributions": 0
+      },
+      "description": "A C++ header-only HTTP/HTTPS server and client library",
+      "fork": true,
+      "languages": {
+        "C++": 2400293,
+        "CMake": 28300,
+        "Dockerfile": 531,
+        "HTML": 938,
+        "Makefile": 8183,
+        "Meson": 9514,
+        "Python": 1992,
+        "Shell": 1475
+      },
+      "created_at": "2020-10-11T16:14:52Z",
+      "updated_at": "2024-08-23T05:39:49Z",
+      "pushed_at": "2020-12-24T17:09:22Z",
+      "size": 2067,
+      "stargazers_count": 13013,
+      "parent": {
+        "id": 5909706,
+        "full_name": "yhirose/cpp-httplib",
+        "description": "A C++ header-only HTTP/HTTPS server and client library",
+        "contributors": [
+          {
+            "login": "yhirose",
+            "id": 357397,
+            "type": "User",
+            "nation": "",
+            "contributions": 1028
+          },
+          {
+            "login": "jimmy-park",
+            "id": 30493199,
+            "type": "User",
+            "nation": "",
+            "contributions": 25
+          },
+          {
+            "login": "Tachi107",
+            "id": 34214253,
+            "type": "User",
+            "nation": "",
+            "contributions": 25
+          },
+          {
+            "login": "sum01",
+            "id": 19376155,
+            "type": "User",
+            "nation": "",
+            "contributions": 14
+          },
+          {
+            "login": "PixlRainbow",
+            "id": 44422178,
+            "type": "User",
+            "nation": "",
+            "contributions": 9
+          },
+          {
+            "login": "ottigeda",
+            "id": 14349891,
+            "type": "User",
+            "nation": "",
+            "contributions": 7
+          },
+          {
+            "login": "omjego",
+            "id": 15705596,
+            "type": "User",
+            "nation": "",
+            "contributions": 7
+          },
+          {
+            "login": "hyperxor",
+            "id": 56217938,
+            "type": "User",
+            "nation": "",
+            "contributions": 7
+          },
+          {
+            "login": "sgraham",
+            "id": 1822,
+            "type": "User",
+            "nation": "",
+            "contributions": 7
+          },
+          {
+            "login": "Zefz",
+            "id": 1359524,
+            "type": "User",
+            "nation": "",
+            "contributions": 7
+          },
+          {
+            "login": "matvore",
+            "id": 946637,
+            "type": "User",
+            "nation": "",
+            "contributions": 6
+          },
+          {
+            "login": "jfsimoneau",
+            "id": 5641564,
+            "type": "User",
+            "nation": "",
+            "contributions": 6
+          },
+          {
+            "login": "gjasny",
+            "id": 1165598,
+            "type": "User",
+            "nation": "",
+            "contributions": 6
+          },
+          {
+            "login": "mrexodia",
+            "id": 2458265,
+            "type": "User",
+            "nation": "",
+            "contributions": 6
+          },
+          {
+            "login": "bugdea1er",
+            "id": 19926617,
+            "type": "User",
+            "nation": "",
+            "contributions": 5
+          },
+          {
+            "login": "jrosdahl",
+            "id": 146927,
+            "type": "User",
+            "nation": "",
+            "contributions": 5
+          },
+          {
+            "login": "bgs99",
+            "id": 10655529,
+            "type": "User",
+            "nation": "",
+            "contributions": 4
+          },
+          {
+            "login": "omaralvarez",
+            "id": 5764407,
+            "type": "User",
+            "nation": "",
+            "contributions": 4
+          },
+          {
+            "login": "gh4ck3r",
+            "id": 2113447,
+            "type": "User",
+            "nation": "",
+            "contributions": 4
+          },
+          {
+            "login": "abouvier",
+            "id": 6044259,
+            "type": "User",
+            "nation": "",
+            "contributions": 4
+          },
+          {
+            "login": "Rockybilly",
+            "id": 13409102,
+            "type": "User",
+            "nation": "",
+            "contributions": 3
+          },
+          {
+            "login": "nioncode",
+            "id": 3159451,
+            "type": "User",
+            "nation": "",
+            "contributions": 3
+          },
+          {
+            "login": "miketsts",
+            "id": 33390384,
+            "type": "User",
+            "nation": "",
+            "contributions": 3
+          },
+          {
+            "login": "stingray-11",
+            "id": 4316805,
+            "type": "User",
+            "nation": "",
+            "contributions": 3
+          },
+          {
+            "login": "kuguma",
+            "id": 1848838,
+            "type": "User",
+            "nation": "",
+            "contributions": 3
+          },
+          {
+            "login": "Fefer-Ivan",
+            "id": 612563,
+            "type": "User",
+            "nation": "",
+            "contributions": 3
+          },
+          {
+            "login": "const-volatile",
+            "id": 9589896,
+            "type": "User",
+            "nation": "",
+            "contributions": 3
+          },
+          {
+            "login": "yosh-matsuda",
+            "id": 59041398,
+            "type": "User",
+            "nation": "",
+            "contributions": 2
+          },
+          {
+            "login": "lightvector",
+            "id": 11942395,
+            "type": "User",
+            "nation": "",
+            "contributions": 2
+          },
+          {
+            "login": "vmaffione",
+            "id": 4920001,
+            "type": "User",
+            "nation": "",
+            "contributions": 2
+          }
+        ],
+        "size": 3281,
+        "stargazers_count": 13011
+      },
+      "contributions": "0.0016474464579901153",
+      "talent_score": "21.43822075782537"
+    },
+    {
+      "id": 71894902,
+      "name": "fireflower",
+      "full_name": "lightvector/fireflower",
+      "private": false,
+      "owner": {
+        "login": "lightvector",
+        "id": 11942395,
+        "type": "User",
+        "nation": "",
+        "contributions": 0
+      },
+      "description": "A rewrite of hanabi-bot in Scala",
+      "fork": false,
+      "languages": {
+        "Scala": 159101
+      },
+      "created_at": "2016-10-25T12:30:16Z",
+      "updated_at": "2024-03-27T19:22:05Z",
+      "pushed_at": "2021-08-26T20:57:29Z",
+      "size": 219,
+      "stargazers_count": 16,
+      "parent": null,
+      "contributions": "1",
+      "talent_score": "16"
+    },
+    {
+      "id": 115803979,
+      "name": "GoNN",
+      "full_name": "lightvector/GoNN",
+      "private": false,
+      "owner": {
+        "login": "lightvector",
+        "id": 11942395,
+        "type": "User",
+        "nation": "",
+        "contributions": 0
+      },
+      "description": "Sandbox for playing with neural nets for Go",
+      "fork": false,
+      "languages": {
+        "C": 6529,
+        "C++": 888757,
+        "CMake": 5747,
+        "Cuda": 51091,
+        "Python": 286785,
+        "Shell": 205
+      },
+      "created_at": "2017-12-30T15:02:31Z",
+      "updated_at": "2024-09-26T17:41:07Z",
+      "pushed_at": "2019-02-28T17:28:23Z",
+      "size": 9684,
+      "stargazers_count": 74,
+      "parent": null,
+      "contributions": "1",
+      "talent_score": "74"
+    },
+    {
+      "id": 746036217,
+      "name": "goscorer",
+      "full_name": "lightvector/goscorer",
+      "private": false,
+      "owner": {
+        "login": "lightvector",
+        "id": 11942395,
+        "type": "User",
+        "nation": "",
+        "contributions": 0
+      },
+      "description": "Territory scoring in Go with seki detection",
+      "fork": false,
+      "languages": {
+        "CSS": 26815,
+        "HTML": 17271,
+        "JavaScript": 78581,
+        "Python": 95168,
+        "Shell": 3720
+      },
+      "created_at": "2024-01-20T21:51:44Z",
+      "updated_at": "2024-09-12T17:52:31Z",
+      "pushed_at": "2024-06-06T15:11:34Z",
+      "size": 420,
+      "stargazers_count": 11,
+      "parent": null,
+      "contributions": "1",
+      "talent_score": "11"
+    },
+    {
+      "id": 33928618,
+      "name": "hanabi-bot",
+      "full_name": "lightvector/hanabi-bot",
+      "private": false,
+      "owner": {
+        "login": "lightvector",
+        "id": 11942395,
+        "type": "User",
+        "nation": "",
+        "contributions": 0
+      },
+      "description": "",
+      "fork": false,
+      "languages": {
+        "Makefile": 461,
+        "OCaml": 86392,
+        "Standard ML": 69
+      },
+      "created_at": "2015-04-14T11:48:10Z",
+      "updated_at": "2023-03-28T18:42:59Z",
+      "pushed_at": "2015-10-04T15:47:19Z",
+      "size": 361,
+      "stargazers_count": 2,
+      "parent": null,
+      "contributions": "1",
+      "talent_score": "2"
+    },
+    {
+      "id": 172640711,
+      "name": "KataGo",
+      "full_name": "lightvector/KataGo",
+      "private": false,
+      "owner": {
+        "login": "lightvector",
+        "id": 11942395,
+        "type": "User",
+        "nation": "",
+        "contributions": 0
+      },
+      "description": "GTP engine and self-play learning in Go",
+      "fork": false,
+      "languages": {
+        "C": 45945,
+        "C++": 4421329,
+        "CMake": 22150,
+        "CSS": 1892,
+        "Cuda": 62928,
+        "HTML": 55414,
+        "JavaScript": 23370,
+        "Python": 640021,
+        "Shell": 55274
+      },
+      "created_at": "2019-02-26T04:57:14Z",
+      "updated_at": "2024-10-28T09:05:16Z",
+      "pushed_at": "2024-10-08T14:39:33Z",
+      "size": 74888,
+      "stargazers_count": 3539,
+      "parent": null,
+      "contributions": "1",
+      "talent_score": "3539"
+    },
+    {
+      "id": 92000777,
+      "name": "leela-analysis",
+      "full_name": "lightvector/leela-analysis",
+      "private": false,
+      "owner": {
+        "login": "lightvector",
+        "id": 11942395,
+        "type": "User",
+        "nation": "",
+        "contributions": 0
+      },
+      "description": "Analysis scripts for Leela",
+      "fork": false,
+      "languages": {
+        "Python": 104214
+      },
+      "created_at": "2017-05-22T01:49:03Z",
+      "updated_at": "2024-02-16T15:41:00Z",
+      "pushed_at": "2018-01-07T04:06:23Z",
+      "size": 93,
+      "stargazers_count": 57,
+      "parent": null,
+      "contributions": "1",
+      "talent_score": "57"
+    },
+    {
+      "id": 402917886,
+      "name": "ogstosgf",
+      "full_name": "lightvector/ogstosgf",
+      "private": false,
+      "owner": {
+        "login": "lightvector",
+        "id": 11942395,
+        "type": "User",
+        "nation": "",
+        "contributions": 0
+      },
+      "description": "Converting raw ogs game jsons to sgfs",
+      "fork": false,
+      "languages": {
+        "Python": 13533,
+        "Shell": 2257
+      },
+      "created_at": "2021-09-03T23:13:18Z",
+      "updated_at": "2024-09-19T02:03:31Z",
+      "pushed_at": "2023-11-21T03:23:51Z",
+      "size": 12,
+      "stargazers_count": 4,
+      "parent": null,
+      "contributions": "1",
+      "talent_score": "4"
+    },
+    {
+      "id": 492022039,
+      "name": "webDiplomacy-dev-docker",
+      "full_name": "lightvector/webDiplomacy-dev-docker",
+      "private": false,
+      "owner": {
+        "login": "lightvector",
+        "id": 11942395,
+        "type": "User",
+        "nation": "",
+        "contributions": 0
+      },
+      "description": "A docker harness for development of webDiplomacy",
+      "fork": true,
+      "languages": {
+        "Dockerfile": 904,
+        "PHP": 13826,
+        "Shell": 6284
+      },
+      "created_at": "2022-05-13T19:46:03Z",
+      "updated_at": "2023-03-28T18:42:36Z",
+      "pushed_at": "2022-05-13T19:50:28Z",
+      "size": 31,
+      "stargazers_count": 1,
+      "parent": {
+        "id": 434031021,
+        "full_name": "codazen/webDiplomacy-dev-docker",
+        "description": "A docker harness for development of webDiplomacy",
+        "contributors": [
+          {
+            "login": "bryancodazen",
+            "id": 93741108,
+            "type": "User",
+            "nation": "",
+            "contributions": 6
+          },
+          {
+            "login": "TimothyJones",
+            "id": 914369,
+            "type": "User",
+            "nation": "",
+            "contributions": 5
+          },
+          {
+            "login": "adamlerer",
+            "id": 5702157,
+            "type": "User",
+            "nation": "",
+            "contributions": 2
+          },
+          {
+            "login": "lightvector",
+            "id": 11942395,
+            "type": "User",
+            "nation": "",
+            "contributions": 1
+          }
+        ],
+        "size": 34,
+        "stargazers_count": 0
+      },
+      "contributions": "0.06666666666666667",
+      "talent_score": "0.06666666666666667"
+    }
+  ],
+  "talent_rank": "3742.504887424492"
+}
