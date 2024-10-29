@@ -8,11 +8,13 @@ import (
 )
 
 func TestFinalDevelopers(t *testing.T) {
-	res, err := fetchers.GetUserInfo("lightvector")
+	githubToken := new(string)
+	*githubToken = "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"
+	res, err := fetchers.GetUserInfo("nguyenthenguyen", githubToken)
 	if err != nil {
 		t.Error(err)
 	}
-	data, err := ParseDevelopersData(res)
+	data, err := ParseDevelopersData(res, githubToken)
 	if err != nil {
 		t.Error(err)
 	}
@@ -25,11 +27,12 @@ func TestFinalDevelopers(t *testing.T) {
 }
 
 func TestParseDevelopersData(t *testing.T) {
-	res, err := fetchers.GetUserInfo("lightvector")
+	githubToken := new(string)
+	res, err := fetchers.GetUserInfo("lightvector", githubToken)
 	if err != nil {
 		t.Error(err)
 	}
-	data, err := ParseDevelopersData(res)
+	data, err := ParseDevelopersData(res, githubToken)
 	if err != nil {
 		t.Error(err)
 	}

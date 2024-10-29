@@ -5,7 +5,7 @@ import (
 	"go.uber.org/zap"
 )
 
-func InsertUser(dev models.Developer) error {
+func InsertDeveloper(dev *models.Developer) error {
 	developer := models.DeveloperStored{
 		GithubId:   dev.Id,
 		Login:      dev.Login,

@@ -1,9 +1,7 @@
 package guessers
 
-func GuessUserTalentRank() {
+import "backend/app/models"
 
-}
-
-func GuessUserNation() {
-
+func GuessUserNation(developer *models.Developer) {
+	//wait for lang-chain
 }

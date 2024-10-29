@@ -23,7 +23,7 @@ func TestInsertUser(t *testing.T) {
 	if err != nil {
 		panic(err)
 	}
-	err = InsertUser(*dev)
+	err = InsertDeveloper(dev)
 	if err != nil {
 		t.Error(err)
 	}

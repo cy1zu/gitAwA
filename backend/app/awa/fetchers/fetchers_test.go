@@ -7,19 +7,22 @@ import (
 )
 
 func TestGetUserInfo(t *testing.T) {
-	res, _ := GetUserInfo("lightvector")
+	githubToken := new(string)
+	res, _ := GetUserInfo("lightvector", githubToken)
 	str, _ := json.MarshalIndent(res, "", "\t")
 	fmt.Println(string(str))
 }
 
 func TestGetReposDetail(t *testing.T) {
-	res, _ := GetReposDetail("lightvector/KataGo")
+	githubToken := new(string)
+	res, _ := GetReposDetail("lightvector/KataGo", githubToken)
 	str, _ := json.MarshalIndent(res, "", "\t")
 	fmt.Println(string(str))
 }
 
 func TestGetReposContributors(t *testing.T) {
-	res, _ := GetReposContributors("lightvector/KataGo")
+	githubToken := new(string)
+	res, _ := GetReposContributors("lightvector/KataGo", githubToken)
 	str, _ := json.MarshalIndent(*res, "", "\t")
 	fmt.Println(string(str))
 }

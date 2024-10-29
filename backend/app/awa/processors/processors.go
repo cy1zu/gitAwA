@@ -53,7 +53,7 @@ func FinalDevelopers(dev *ParsedDeveloper) (models.Developer, error) {
 	return data, nil
 }
 
-func ParseDevelopersData(dev *fetchers.DeveloperFull) (*ParsedDeveloper, error) {
+func ParseDevelopersData(dev *fetchers.DeveloperFull, githubToken *string) (*ParsedDeveloper, error) {
 	if dev == nil {
 		zap.L().Error("ParseDevelopersData failed: dev is nil")
 		return &ParsedDeveloper{}, nil
@@ -79,7 +79,7 @@ func ParseDevelopersData(dev *fetchers.DeveloperFull) (*ParsedDeveloper, error) 
 
 	for _, repo := range dev.AllRepos {
 		if repo.Fork == false {
-			detail, err := fetchers.GetReposDetail(repo.FullName)
+			detail, err := fetchers.GetReposDetail(repo.FullName, githubToken)
 			if err != nil {
 				zap.L().Error("fetchers.GetReposDetail failed", zap.Error(err))
 				zap.L().Debug("fetchers.GetReposDetail failed", zap.Error(err),
@@ -87,7 +87,7 @@ func ParseDevelopersData(dev *fetchers.DeveloperFull) (*ParsedDeveloper, error) 
 					zap.String("repoId", repo.FullName))
 				continue
 			}
-			lang, err := fetchers.GetReposLanguages(repo.FullName)
+			lang, err := fetchers.GetReposLanguages(repo.FullName, githubToken)
 			if err != nil {
 				zap.L().Error("fetchers.GetReposLanguages failed", zap.Error(err))
 				zap.L().Debug("fetchers.GetReposLanguages failed", zap.Error(err),
@@ -95,7 +95,7 @@ func ParseDevelopersData(dev *fetchers.DeveloperFull) (*ParsedDeveloper, error) 
 					zap.String("repoId", repo.FullName))
 				continue
 			}
-			cons, err := fetchers.GetReposContributors(repo.FullName)
+			cons, err := fetchers.GetReposContributors(repo.FullName, githubToken)
 			if err != nil {
 				zap.L().Error("fetchers.GetReposContributors failed", zap.Error(err))
 				zap.L().Debug("fetchers.GetReposContributors failed", zap.Error(err),
@@ -125,7 +125,7 @@ func ParseDevelopersData(dev *fetchers.DeveloperFull) (*ParsedDeveloper, error) 
 				Parent:          nil,
 			})
 		} else if repo.Fork == true {
-			detail, err := fetchers.GetReposDetail(repo.FullName)
+			detail, err := fetchers.GetReposDetail(repo.FullName, githubToken)
 			if err != nil {
 				zap.L().Error("fetchers.GetReposDetail failed", zap.Error(err))
 				zap.L().Debug("fetchers.GetReposDetail failed", zap.Error(err),
@@ -133,7 +133,7 @@ func ParseDevelopersData(dev *fetchers.DeveloperFull) (*ParsedDeveloper, error) 
 					zap.String("repoId", repo.FullName))
 				continue
 			}
-			lang, err := fetchers.GetReposLanguages(detail.Parent.FullName)
+			lang, err := fetchers.GetReposLanguages(detail.Parent.FullName, githubToken)
 			if err != nil {
 				zap.L().Error("fetchers.GetReposLanguages failed", zap.Error(err))
 				zap.L().Debug("fetchers.GetReposLanguages failed", zap.Error(err),
@@ -141,7 +141,7 @@ func ParseDevelopersData(dev *fetchers.DeveloperFull) (*ParsedDeveloper, error) 
 					zap.String("repoId", repo.FullName))
 				continue
 			}
-			cons, err := fetchers.GetReposContributors(detail.Parent.FullName)
+			cons, err := fetchers.GetReposContributors(detail.Parent.FullName, githubToken)
 			if err != nil {
 				zap.L().Error("fetchers.GetReposContributors failed", zap.Error(err))
 				zap.L().Debug("fetchers.GetReposContributors failed", zap.Error(err),
