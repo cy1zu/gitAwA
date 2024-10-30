@@ -27,7 +27,7 @@ func InsertRepo(repo models.Repos) error {
 	}
 	if repo.Fork == true && repo.Parent != nil {
 		stored.ParentId = repo.Parent.Id
-		stored.ParentFullName = &repo.Parent.FullName
+		stored.ParentFullName = repo.Parent.FullName
 		stored.ParentStargazersCount = repo.Parent.StargazersCount
 	}
 	res2 := pdb.Create(&stored)

@@ -14,7 +14,6 @@ log:
   max_age: 30
   max_backups: 5
 postgres:
-  installed: true
   ssl_mode: "prefer"
   host: "127.0.0.1"
   port: 5432

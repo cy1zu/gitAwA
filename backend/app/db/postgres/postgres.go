@@ -11,11 +11,7 @@ import (
 
 var pdb *gorm.DB
 
-func Init(testing string) {
-	if config.Conf.PostgresConfig.Installed == false {
-		zap.L().Warn("running on no database mode")
-		return
-	}
+func Init(testing string) error {
 	dsn := fmt.Sprintf("host=%s user=%s password=%s dbname=%s sslmode=%s TimeZone=Asia/Shanghai",
 		config.Conf.PostgresConfig.Host,
 		config.Conf.PostgresConfig.User,
@@ -24,13 +20,10 @@ func Init(testing string) {
 		config.Conf.PostgresConfig.SSLMode)
 	db, err := gorm.Open(postgres.Open(dsn), &gorm.Config{})
 	if err != nil {
-		config.Conf.PostgresConfig.Using = false
 		zap.L().Error("failed to connect to postgres", zap.Error(err))
-		zap.L().Warn("running on no database mode")
-		return
+		return ErrorInitDatabaseFailed
 	}
 	pdb = db
-	config.Conf.PostgresConfig.Using = true
 
 	if testing == "test" {
 		err = db.Migrator().DropTable(
@@ -39,24 +32,24 @@ func Init(testing string) {
 			&models.LanguageStored{},
 			&models.ContributionsStored{})
 		if err != nil {
-			config.Conf.PostgresConfig.Using = false
 			panic(err)
 		}
 	}
+
 	err = pdb.AutoMigrate(
 		&models.DeveloperStored{},
 		&models.RepoStored{},
 		&models.LanguageStored{},
 		&models.ContributionsStored{})
 	if err != nil {
-		config.Conf.PostgresConfig.Using = false
-		zap.L().Warn("running on no database mode")
+		zap.L().Error("data migrate failed", zap.Error(err))
+		return err
 	}
-
-	zap.L().Info("running on database mode")
 	err = CacheInit()
 	if err != nil {
-		panic(err)
+		zap.L().Error("init cache failed", zap.Error(err))
+		return err
 	}
-	return
+	zap.L().Info("running on database mode")
+	return nil
 }

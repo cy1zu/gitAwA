@@ -17,10 +17,10 @@ func InsertDeveloper(dev *models.Developer) error {
 		Login:      dev.Login,
 		Name:       dev.Name,
 		Type:       dev.Type,
-		Company:    &dev.Company,
-		Blog:       &dev.Blog,
-		Location:   &dev.Location,
-		Email:      &dev.Email,
+		Company:    dev.Company,
+		Blog:       dev.Blog,
+		Location:   dev.Location,
+		Email:      dev.Email,
 		CreatedAt:  dev.CreatedAt,
 		TalentRank: dev.TalentRank,
 	}
@@ -48,8 +48,7 @@ func InsertDeveloper(dev *models.Developer) error {
 			continue
 		}
 	}
-	CacheDevelopers[dev.Login] = &developer
-	CacheDevelopersSet.Store(dev.Login, DataStored)
+	// insert cache
 	return nil
 }
 

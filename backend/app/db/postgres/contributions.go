@@ -25,9 +25,9 @@ func InsertContributions(githubId int64, login string, repoId int64, fullName st
 	return nil
 }
 
-func GetContributionsByDeveloper(githubLogin string, offset int, limit int) ([]models.ContributionsStored, error) {
+func GetContributionsByDeveloper(githubLogin string) ([]models.ContributionsStored, error) {
 	cons := make([]models.ContributionsStored, 0)
-	res := pdb.Limit(limit).Offset(offset).Order("talent_score").Find(&cons, "developer_github_id = ?", githubLogin)
+	res := pdb.Order("talent_score").Find(&cons, "developer_github_id = ?", githubLogin)
 	if res.Error != nil {
 		zap.L().Error("get contributions by developer failed", zap.Error(res.Error))
 		return []models.ContributionsStored{}, res.Error

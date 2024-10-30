@@ -43,6 +43,6 @@ type RepoStored struct {
 	Size                  int       `json:"size" gorm:"default:0"`
 	StargazersCount       int       `json:"stargazers_count" gorm:"default:0;index:idx_stargazers_count,type:btree"`
 	ParentId              int64     `json:"parent_id"`
-	ParentFullName        *string   `json:"parent_full_name"`
+	ParentFullName        string    `json:"parent_full_name"`
 	ParentStargazersCount int       `json:"parent_stargazers_count"`
 }
