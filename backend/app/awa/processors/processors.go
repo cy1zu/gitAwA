@@ -171,7 +171,6 @@ func ParseDevelopersData(dev *fetchers.DeveloperFull, githubToken *string) (*Par
 				Parent: &models.MiniRepo{
 					Id:              detail.Parent.Id,
 					FullName:        detail.Parent.FullName,
-					Description:     detail.Parent.Description,
 					Contributors:    cons,
 					Size:            detail.Parent.Size,
 					StargazersCount: detail.Parent.StargazersCount,
@@ -210,7 +209,6 @@ func calculateUserContributions(githubId string, repo *ParsedRepos) (models.Repo
 			FullName:        repo.FullName,
 			Private:         repo.Private,
 			Owner:           repo.Owner,
-			Description:     repo.Description,
 			Fork:            repo.Fork,
 			Languages:       repo.Languages,
 			CreatedAt:       repo.CreatedAt,
@@ -230,7 +228,6 @@ func calculateUserContributions(githubId string, repo *ParsedRepos) (models.Repo
 			FullName:        repo.FullName,
 			Private:         repo.Private,
 			Owner:           repo.Owner,
-			Description:     repo.Description,
 			Fork:            repo.Fork,
 			Languages:       repo.Languages,
 			CreatedAt:       repo.CreatedAt,

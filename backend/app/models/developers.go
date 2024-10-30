@@ -3,7 +3,7 @@ package models
 import "time"
 
 type Developer struct {
-	Id               int              `json:"id"`
+	Id               int64            `json:"id"`
 	Login            string           `json:"login"`
 	Type             string           `json:"type"`
 	Name             string           `json:"name"`
@@ -19,15 +19,15 @@ type Developer struct {
 
 type MiniDeveloper struct {
 	Login         string `json:"login"`
-	Id            int    `json:"id"`
+	Id            int64  `json:"id"`
 	Type          string `json:"type"`
 	Nation        string `json:"nation"`
 	Contributions int64  `json:"contributions"`
 }
 
 type DeveloperStored struct {
-	Id         int       `json:"id" gorm:"primary_key;AUTO_INCREMENT"`
-	GithubId   int       `json:"github_id" gorm:"not null;unique"`
+	Id         int64     `json:"id" gorm:"primary_key;AUTO_INCREMENT"`
+	GithubId   int64     `json:"github_id" gorm:"not null;unique"`
 	Login      string    `json:"login" gorm:"not null;index:idx_github_login,type:hash"`
 	Type       string    `json:"type" gorm:"not null"`
 	Name       string    `json:"name"`

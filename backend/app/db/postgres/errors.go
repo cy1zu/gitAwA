@@ -3,5 +3,6 @@ package postgres
 import "errors"
 
 var (
-	ErrorLangInsertType = errors.New("InsType must be 'users' or 'repos'")
+	ErrorLangInsertType     = errors.New("insType must be 'users' or 'repos'")
+	ErrorDeveloperNotStored = errors.New("developer not stored")
 )

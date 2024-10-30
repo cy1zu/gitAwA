@@ -8,7 +8,7 @@ import (
 	"testing"
 )
 
-func TestInsertUser(t *testing.T) {
+func TestInsertDeveloper(t *testing.T) {
 	err := config.Init()
 	if err != nil {
 		panic(err)

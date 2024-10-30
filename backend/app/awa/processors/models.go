@@ -7,7 +7,7 @@ import (
 
 type ParsedDeveloper struct {
 	Login     string         `json:"login"`
-	Id        int            `json:"id"`
+	Id        int64          `json:"id"`
 	Type      string         `json:"type"`
 	Name      string         `json:"name"`
 	Company   string         `json:"company"`
@@ -20,7 +20,7 @@ type ParsedDeveloper struct {
 }
 
 type ParsedRepos struct {
-	Id              int                     `json:"id"`
+	Id              int64                   `json:"id"`
 	Name            string                  `json:"name"`
 	FullName        string                  `json:"full_name"`
 	Private         bool                    `json:"private"`

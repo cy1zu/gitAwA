@@ -2,10 +2,16 @@ package postgres
 
 import (
 	"backend/app/models"
+	"errors"
 	"go.uber.org/zap"
+	"gorm.io/gorm"
 )
 
 func InsertDeveloper(dev *models.Developer) error {
+	status, ok := CacheDevelopersSet.Load(dev.Login)
+	if !ok || status != DataProcessing {
+		return nil
+	}
 	developer := models.DeveloperStored{
 		GithubId:   dev.Id,
 		Login:      dev.Login,
@@ -21,6 +27,7 @@ func InsertDeveloper(dev *models.Developer) error {
 	res := pdb.Create(&developer)
 	if res.Error != nil {
 		zap.L().Error("insert user failed", zap.Error(res.Error))
+		CacheDevelopersSet.Delete(dev.Login)
 		return res.Error
 	}
 	for _, repo := range *dev.ContributedRepos {
@@ -41,5 +48,19 @@ func InsertDeveloper(dev *models.Developer) error {
 			continue
 		}
 	}
+	CacheDevelopers[dev.Login] = &developer
+	CacheDevelopersSet.Store(dev.Login, DataStored)
 	return nil
+}
+
+func GetDeveloper(githubLogin string) (models.DeveloperStored, error) {
+	developer := models.DeveloperStored{}
+	res := pdb.Take(&developer, "github_login = ?", githubLogin)
+	if errors.Is(res.Error, gorm.ErrRecordNotFound) {
+		return developer, ErrorDeveloperNotStored
+	}
+	if res.Error != nil {
+		return developer, res.Error
+	}
+	return developer, nil
 }

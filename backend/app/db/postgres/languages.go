@@ -2,10 +2,12 @@ package postgres
 
 import (
 	"backend/app/models"
+	"errors"
 	"go.uber.org/zap"
+	"gorm.io/gorm"
 )
 
-func InsertLanguages(insType string, objectId int, objectFullName string, language string, size int64) error {
+func InsertLanguages(insType string, objectId int64, objectFullName string, language string, size int64) error {
 	if insType != "users" && insType != "repos" {
 		return ErrorLangInsertType
 	}
@@ -25,4 +27,22 @@ func InsertLanguages(insType string, objectId int, objectFullName string, langua
 		return res.Error
 	}
 	return nil
+}
+
+func GetLanguages(recType string, id int64) (map[string]int64, error) {
+	data := make([]models.LanguageStored, 0)
+	res := pdb.Order("size").Find(&data, "type = ? and id = ?", recType, id)
+	if errors.Is(res.Error, gorm.ErrRecordNotFound) {
+		return nil, nil
+	}
+	if res.Error != nil {
+		zap.L().Error("postgres.GetLanguages failed", zap.Error(res.Error))
+		return nil, nil
+	}
+
+	languages := make(map[string]int64)
+	for _, lang := range data {
+		languages[lang.Language] = lang.Size
+	}
+	return languages, nil
 }

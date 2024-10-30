@@ -54,5 +54,9 @@ func Init(testing string) {
 	}
 
 	zap.L().Info("running on database mode")
+	err = CacheInit()
+	if err != nil {
+		panic(err)
+	}
 	return
 }

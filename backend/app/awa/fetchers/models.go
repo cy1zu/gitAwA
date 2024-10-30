@@ -4,7 +4,7 @@ import "time"
 
 type DeveloperFull struct {
 	Login            string      `json:"login"`
-	Id               int         `json:"id"`
+	Id               int64       `json:"id"`
 	Url              string      `json:"url"`
 	FollowersUrl     string      `json:"followers_url"`
 	FollowingUrl     string      `json:"following_url"`
@@ -116,14 +116,14 @@ type ReposFull struct {
 }
 
 type ReposDetailsFull struct {
-	Id       int    `json:"id"`
+	Id       int64  `json:"id"`
 	NodeId   string `json:"node_id"`
 	Name     string `json:"name"`
 	FullName string `json:"full_name"`
 	Private  bool   `json:"private"`
 	Owner    struct {
 		Login             string `json:"login"`
-		Id                int    `json:"id"`
+		Id                int64  `json:"id"`
 		NodeId            string `json:"node_id"`
 		AvatarUrl         string `json:"avatar_url"`
 		GravatarId        string `json:"gravatar_id"`
@@ -223,14 +223,14 @@ type ReposDetailsFull struct {
 	DefaultBranch            string        `json:"default_branch"`
 	TempCloneToken           interface{}   `json:"temp_clone_token"`
 	Parent                   struct {
-		Id       int    `json:"id"`
+		Id       int64  `json:"id"`
 		NodeId   string `json:"node_id"`
 		Name     string `json:"name"`
 		FullName string `json:"full_name"`
 		Private  bool   `json:"private"`
 		Owner    struct {
 			Login             string `json:"login"`
-			Id                int    `json:"id"`
+			Id                int64  `json:"id"`
 			NodeId            string `json:"node_id"`
 			AvatarUrl         string `json:"avatar_url"`
 			GravatarId        string `json:"gravatar_id"`
