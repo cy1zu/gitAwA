@@ -33,11 +33,20 @@ func InsertDeveloper(dev *models.Developer) error {
 	for _, repo := range *dev.ContributedRepos {
 		err := InsertRepo(repo)
 		if err != nil {
+			zap.L().Debug("InsertRepo failed", zap.Error(err),
+				zap.String("repo fullname", repo.FullName))
 			continue
 		}
 		// insert contributions
-		err = InsertContributions(dev.Id, dev.Login, repo.Id, repo.FullName, repo.Contributions, repo.TalentScore)
+		if repo.Fork == true {
+			err = InsertContributions(dev.Id, dev.Login, true, repo.Parent.Id, repo.Parent.FullName, repo.Contributions, repo.TalentScore)
+		} else {
+			err = InsertContributions(dev.Id, dev.Login, false, repo.Id, repo.FullName, repo.Contributions, repo.TalentScore)
+		}
 		if err != nil {
+			zap.L().Debug("InsertContributions failed", zap.Error(err),
+				zap.String("dev login", dev.Login),
+				zap.String("repo fullname", repo.FullName))
 			continue
 		}
 	}
@@ -45,10 +54,13 @@ func InsertDeveloper(dev *models.Developer) error {
 	for lang, size := range dev.Languages {
 		err := InsertLanguages("users", dev.Id, dev.Login, lang, size)
 		if err != nil {
+			zap.L().Debug("InsertLanguages failed", zap.Error(err),
+				zap.String("dev login", dev.Login),
+				zap.String("languages", lang),
+				zap.Int64("size", size))
 			continue
 		}
 	}
-	// insert cache
 	return nil
 }
 

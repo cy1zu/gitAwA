@@ -19,6 +19,7 @@ func Init() *gin.Engine {
 	{
 		// v1.GET("developers", GetDeveloperListHandler)
 		v1.GET("developers/:developerLogin", GetDeveloperHandler)
+		v1.GET("test", TestHandler)
 	}
 
 	return r

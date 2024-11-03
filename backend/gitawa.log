@@ -1,0 +1,213 @@
+2024-10-30T19:50:00.522+0800	error	postgres/postgres.go:23	failed to connect to postgres	{"error": "failed to connect to `host=127.0.0.1 user=postgres database=gitawa_db`: server error (\ufffd\ufffd\ufffd\ufffd\ufffd\ufffd\ufffd\ufffd: \ufffd\ufffd\ufffdݿ\ufffd \"gitawa_db\" \ufffd\ufffd\ufffd\ufffd\ufffd\ufffd (SQLSTATE 3D000))"}
+2024-10-30T19:51:20.142+0800	info	postgres/postgres.go:53	running on database mode
+2024-10-30T19:52:36.027+0800	info	backend/main.go:53	Shutdown Server ...
+2024-10-30T19:52:36.028+0800	info	backend/main.go:59	Server exiting
+2024-10-30T19:54:33.840+0800	info	postgres/postgres.go:53	running on database mode
+2024-10-30T19:56:57.599+0800	info	zap@v1.1.4/zap.go:117	/api/developers/lightvector	{"status": 200, "method": "GET", "path": "/api/developers/lightvector", "query": "", "ip": "127.0.0.1", "user-agent": "PostmanRuntime/7.42.0", "latency": 0, "time": "2024-10-30T11:56:57Z"}
+2024-10-30T19:59:52.574+0800	error	postgres/contributions.go:32	get contributions by developer failed	{"error": "错误: 无效的类型 bigint 输入语法: \"lightvector\" (SQLSTATE 22P02)"}
+2024-10-30T19:59:52.574+0800	error	postgres/postgres.go:50	init cache failed	{"error": "错误: 无效的类型 bigint 输入语法: \"lightvector\" (SQLSTATE 22P02)"}
+2024-10-30T20:00:43.270+0800	error	postgres/contributions.go:32	get contributions by developer failed	{"error": "错误: 字段 \"developer_github_login\" 不存在 (SQLSTATE 42703)"}
+2024-10-30T20:00:43.271+0800	error	postgres/postgres.go:50	init cache failed	{"error": "错误: 字段 \"developer_github_login\" 不存在 (SQLSTATE 42703)"}
+2024-10-30T20:01:54.402+0800	info	postgres/postgres.go:53	running on database mode
+2024-10-30T20:01:59.255+0800	info	zap@v1.1.4/zap.go:117	/api/developers/lightvector	{"status": 200, "method": "GET", "path": "/api/developers/lightvector", "query": "", "ip": "127.0.0.1", "user-agent": "PostmanRuntime/7.42.0", "latency": 0.0001166, "time": "2024-10-30T12:01:59Z"}
+2024-10-30T20:02:25.617+0800	error	postgres/developer.go:29	insert user failed	{"error": "错误: 重复键违反唯一约束\"uni_developer_storeds_github_id\" (SQLSTATE 23505)"}
+2024-10-30T20:02:25.617+0800	error	awa/awa.go:36	postgres.InsertDeveloper failed	{"error": "错误: 重复键违反唯一约束\"uni_developer_storeds_github_id\" (SQLSTATE 23505)"}
+2024-10-30T20:04:04.202+0800	info	zap@v1.1.4/zap.go:117	/api/developers/lightvector	{"status": 200, "method": "GET", "path": "/api/developers/lightvector", "query": "", "ip": "127.0.0.1", "user-agent": "PostmanRuntime/7.42.0", "latency": 0, "time": "2024-10-30T12:04:04Z"}
+2024-10-30T20:04:29.432+0800	error	postgres/developer.go:29	insert user failed	{"error": "错误: 重复键违反唯一约束\"uni_developer_storeds_github_id\" (SQLSTATE 23505)"}
+2024-10-30T20:04:29.432+0800	error	awa/awa.go:36	postgres.InsertDeveloper failed	{"error": "错误: 重复键违反唯一约束\"uni_developer_storeds_github_id\" (SQLSTATE 23505)"}
+2024-10-30T20:05:04.206+0800	info	backend/main.go:53	Shutdown Server ...
+2024-10-30T20:05:04.207+0800	info	backend/main.go:59	Server exiting
+2024-10-30T20:05:11.563+0800	info	postgres/postgres.go:53	running on database mode
+2024-10-30T20:05:17.069+0800	info	zap@v1.1.4/zap.go:117	/api/developers/lightvector	{"status": 200, "method": "GET", "path": "/api/developers/lightvector", "query": "", "ip": "127.0.0.1", "user-agent": "PostmanRuntime/7.42.0", "latency": 0.0000631, "time": "2024-10-30T12:05:17Z"}
+2024-10-30T20:05:43.388+0800	error	postgres/developer.go:29	insert user failed	{"error": "错误: 重复键违反唯一约束\"uni_developer_storeds_github_id\" (SQLSTATE 23505)"}
+2024-10-30T20:05:43.388+0800	error	awa/awa.go:36	postgres.InsertDeveloper failed	{"error": "错误: 重复键违反唯一约束\"uni_developer_storeds_github_id\" (SQLSTATE 23505)"}
+2024-10-30T20:05:56.457+0800	info	backend/main.go:53	Shutdown Server ...
+2024-10-30T20:05:56.458+0800	info	backend/main.go:59	Server exiting
+2024-10-30T20:07:33.115+0800	info	postgres/postgres.go:53	running on database mode
+2024-10-30T20:07:36.694+0800	info	zap@v1.1.4/zap.go:117	/api/developers/lightvector	{"status": 200, "method": "GET", "path": "/api/developers/lightvector", "query": "", "ip": "127.0.0.1", "user-agent": "PostmanRuntime/7.42.0", "latency": 0, "time": "2024-10-30T12:07:36Z"}
+2024-10-30T20:08:03.168+0800	error	postgres/developer.go:29	insert user failed	{"error": "错误: 重复键违反唯一约束\"uni_developer_storeds_github_id\" (SQLSTATE 23505)"}
+2024-10-30T20:08:03.168+0800	error	awa/awa.go:36	postgres.InsertDeveloper failed	{"error": "错误: 重复键违反唯一约束\"uni_developer_storeds_github_id\" (SQLSTATE 23505)"}
+2024-10-30T20:10:17.119+0800	info	backend/main.go:53	Shutdown Server ...
+2024-10-30T20:10:17.120+0800	info	backend/main.go:59	Server exiting
+2024-10-30T20:10:23.725+0800	info	postgres/postgres.go:53	running on database mode
+2024-10-30T20:12:10.659+0800	info	backend/main.go:53	Shutdown Server ...
+2024-10-30T20:12:10.660+0800	info	backend/main.go:59	Server exiting
+2024-10-30T20:12:16.267+0800	info	postgres/postgres.go:53	running on database mode
+2024-10-30T20:12:27.684+0800	info	zap@v1.1.4/zap.go:117	/api/developers/lightvector	{"status": 200, "method": "GET", "path": "/api/developers/lightvector", "query": "", "ip": "127.0.0.1", "user-agent": "PostmanRuntime/7.42.0", "latency": 0, "time": "2024-10-30T12:12:27Z"}
+2024-10-30T20:12:56.642+0800	error	postgres/developer.go:29	insert user failed	{"error": "错误: 重复键违反唯一约束\"uni_developer_storeds_github_id\" (SQLSTATE 23505)"}
+2024-10-30T20:12:56.642+0800	error	awa/awa.go:36	postgres.InsertDeveloper failed	{"error": "错误: 重复键违反唯一约束\"uni_developer_storeds_github_id\" (SQLSTATE 23505)"}
+2024-10-30T20:12:59.597+0800	info	backend/main.go:53	Shutdown Server ...
+2024-10-30T20:12:59.597+0800	info	backend/main.go:59	Server exiting
+2024-10-30T20:13:05.966+0800	info	postgres/postgres.go:53	running on database mode
+2024-10-30T20:14:36.549+0800	info	backend/main.go:53	Shutdown Server ...
+2024-10-30T20:14:36.550+0800	info	backend/main.go:59	Server exiting
+2024-10-30T20:14:41.196+0800	info	postgres/postgres.go:53	running on database mode
+2024-10-30T20:15:04.592+0800	info	backend/main.go:53	Shutdown Server ...
+2024-10-30T20:15:04.593+0800	info	backend/main.go:59	Server exiting
+2024-10-30T20:15:09.526+0800	info	postgres/postgres.go:53	running on database mode
+2024-10-30T20:16:04.561+0800	info	zap@v1.1.4/zap.go:117	/api/developers/fuhaoda	{"status": 200, "method": "GET", "path": "/api/developers/fuhaoda", "query": "", "ip": "127.0.0.1", "user-agent": "PostmanRuntime/7.42.0", "latency": 0, "time": "2024-10-30T12:16:04Z"}
+2024-10-30T20:16:45.836+0800	info	zap@v1.1.4/zap.go:117	/api/developers/fuhaoda	{"status": 200, "method": "GET", "path": "/api/developers/fuhaoda", "query": "", "ip": "127.0.0.1", "user-agent": "PostmanRuntime/7.42.0", "latency": 0.0001, "time": "2024-10-30T12:16:45Z"}
+2024-10-30T20:17:27.844+0800	info	zap@v1.1.4/zap.go:117	/api/developers/fuhaoda	{"status": 200, "method": "GET", "path": "/api/developers/fuhaoda", "query": "", "ip": "127.0.0.1", "user-agent": "PostmanRuntime/7.42.0", "latency": 0, "time": "2024-10-30T12:17:27Z"}
+2024-10-30T20:19:02.485+0800	info	backend/main.go:53	Shutdown Server ...
+2024-10-30T20:19:02.487+0800	info	backend/main.go:59	Server exiting
+2024-10-30T20:19:08.352+0800	info	postgres/postgres.go:53	running on database mode
+2024-10-30T20:19:23.164+0800	info	zap@v1.1.4/zap.go:117	/api/developers/fuhaoda	{"status": 200, "method": "GET", "path": "/api/developers/fuhaoda", "query": "", "ip": "127.0.0.1", "user-agent": "PostmanRuntime/7.42.0", "latency": 0, "time": "2024-10-30T12:19:23Z"}
+2024-10-30T20:19:49.242+0800	error	postgres/developer.go:29	insert user failed	{"error": "错误: 重复键违反唯一约束\"uni_developer_storeds_github_id\" (SQLSTATE 23505)"}
+2024-10-30T20:19:49.242+0800	error	awa/awa.go:36	postgres.InsertDeveloper failed	{"error": "错误: 重复键违反唯一约束\"uni_developer_storeds_github_id\" (SQLSTATE 23505)"}
+2024-10-30T20:20:17.298+0800	info	backend/main.go:53	Shutdown Server ...
+2024-10-30T20:20:17.298+0800	info	backend/main.go:59	Server exiting
+2024-10-30T20:29:03.031+0800	info	postgres/postgres.go:53	running on database mode
+2024-10-30T20:29:59.353+0800	info	backend/main.go:53	Shutdown Server ...
+2024-10-30T20:29:59.354+0800	info	backend/main.go:59	Server exiting
+2024-10-30T20:30:03.678+0800	info	postgres/postgres.go:53	running on database mode
+2024-10-30T20:30:50.249+0800	info	backend/main.go:53	Shutdown Server ...
+2024-10-30T20:30:50.250+0800	info	backend/main.go:59	Server exiting
+2024-10-30T20:30:54.839+0800	info	postgres/postgres.go:53	running on database mode
+2024-10-30T20:31:09.361+0800	info	backend/main.go:53	Shutdown Server ...
+2024-10-30T20:31:09.361+0800	info	backend/main.go:59	Server exiting
+2024-10-30T20:31:13.650+0800	info	postgres/postgres.go:53	running on database mode
+2024-10-30T20:32:01.911+0800	info	backend/main.go:53	Shutdown Server ...
+2024-10-30T20:32:01.912+0800	info	backend/main.go:59	Server exiting
+2024-10-30T20:32:06.358+0800	info	postgres/postgres.go:53	running on database mode
+2024-10-30T20:32:55.499+0800	info	backend/main.go:53	Shutdown Server ...
+2024-10-30T20:32:55.499+0800	info	backend/main.go:59	Server exiting
+2024-10-30T20:33:43.184+0800	info	postgres/postgres.go:53	running on database mode
+2024-10-30T20:35:10.025+0800	info	backend/main.go:53	Shutdown Server ...
+2024-10-30T20:35:10.025+0800	info	backend/main.go:59	Server exiting
+2024-10-30T20:36:55.008+0800	info	postgres/postgres.go:53	running on database mode
+2024-10-30T20:38:57.177+0800	info	zap@v1.1.4/zap.go:117	/api/developers/fuhaoda	{"status": 200, "method": "GET", "path": "/api/developers/fuhaoda", "query": "", "ip": "127.0.0.1", "user-agent": "PostmanRuntime/7.42.0", "latency": 0.0005452, "time": "2024-10-30T12:38:57Z"}
+2024-10-30T20:39:12.879+0800	info	zap@v1.1.4/zap.go:117	/api/developers/lightvector	{"status": 200, "method": "GET", "path": "/api/developers/lightvector", "query": "", "ip": "127.0.0.1", "user-agent": "PostmanRuntime/7.42.0", "latency": 0, "time": "2024-10-30T12:39:12Z"}
+2024-10-30T20:39:26.316+0800	info	zap@v1.1.4/zap.go:117	/api/developers/fuhaoda	{"status": 200, "method": "GET", "path": "/api/developers/fuhaoda", "query": "", "ip": "127.0.0.1", "user-agent": "PostmanRuntime/7.42.0", "latency": 0.0004173, "time": "2024-10-30T12:39:26Z"}
+2024-10-30T20:42:30.856+0800	info	backend/main.go:53	Shutdown Server ...
+2024-10-30T20:42:30.857+0800	info	backend/main.go:59	Server exiting
+2024-10-30T20:45:46.054+0800	info	postgres/postgres.go:53	running on database mode
+2024-10-30T20:46:07.517+0800	info	zap@v1.1.4/zap.go:117	/api/developers/lightvector	{"status": 200, "method": "GET", "path": "/api/developers/lightvector", "query": "", "ip": "127.0.0.1", "user-agent": "PostmanRuntime/7.42.0", "latency": 0.0006325, "time": "2024-10-30T12:46:07Z"}
+2024-10-30T20:46:31.483+0800	info	zap@v1.1.4/zap.go:117	/api/developers/lightvector	{"status": 200, "method": "GET", "path": "/api/developers/lightvector", "query": "", "ip": "127.0.0.1", "user-agent": "PostmanRuntime/7.42.0", "latency": 0.0005102, "time": "2024-10-30T12:46:31Z"}
+2024-10-30T20:46:53.031+0800	info	zap@v1.1.4/zap.go:117	/api/developers/lightvector	{"status": 200, "method": "GET", "path": "/api/developers/lightvector", "query": "", "ip": "127.0.0.1", "user-agent": "PostmanRuntime/7.42.0", "latency": 0, "time": "2024-10-30T12:46:53Z"}
+2024-10-30T20:47:16.534+0800	info	zap@v1.1.4/zap.go:117	/api/developers/lightvector	{"status": 200, "method": "GET", "path": "/api/developers/lightvector", "query": "", "ip": "127.0.0.1", "user-agent": "PostmanRuntime/7.42.0", "latency": 0, "time": "2024-10-30T12:47:16Z"}
+2024-10-30T20:47:58.896+0800	info	zap@v1.1.4/zap.go:117	/api/developers/lightvector	{"status": 200, "method": "GET", "path": "/api/developers/lightvector", "query": "", "ip": "127.0.0.1", "user-agent": "PostmanRuntime/7.42.0", "latency": 0, "time": "2024-10-30T12:47:58Z"}
+2024-10-30T20:49:36.861+0800	info	backend/main.go:53	Shutdown Server ...
+2024-10-30T20:49:36.862+0800	info	backend/main.go:59	Server exiting
+2024-10-30T20:49:44.006+0800	info	postgres/postgres.go:53	running on database mode
+2024-10-30T20:49:47.535+0800	info	zap@v1.1.4/zap.go:117	/api/developers/lightvector	{"status": 200, "method": "GET", "path": "/api/developers/lightvector", "query": "", "ip": "127.0.0.1", "user-agent": "PostmanRuntime/7.42.0", "latency": 0.000257, "time": "2024-10-30T12:49:47Z"}
+2024-10-30T20:50:04.259+0800	info	zap@v1.1.4/zap.go:117	/api/developers/fuhaoda	{"status": 200, "method": "GET", "path": "/api/developers/fuhaoda", "query": "", "ip": "127.0.0.1", "user-agent": "PostmanRuntime/7.42.0", "latency": 0.0004433, "time": "2024-10-30T12:50:04Z"}
+2024-10-30T20:50:33.275+0800	info	zap@v1.1.4/zap.go:117	/api/developers/fuhaoda	{"status": 200, "method": "GET", "path": "/api/developers/fuhaoda", "query": "", "ip": "127.0.0.1", "user-agent": "PostmanRuntime/7.42.0", "latency": 0, "time": "2024-10-30T12:50:33Z"}
+2024-10-30T20:52:10.173+0800	info	backend/main.go:53	Shutdown Server ...
+2024-10-30T20:52:10.173+0800	info	backend/main.go:59	Server exiting
+2024-10-30T21:11:44.740+0800	info	postgres/postgres.go:53	running on database mode
+2024-10-30T21:12:19.875+0800	info	zap@v1.1.4/zap.go:117	/api/developers/fuhaoda	{"status": 200, "method": "GET", "path": "/api/developers/fuhaoda", "query": "", "ip": "127.0.0.1", "user-agent": "PostmanRuntime/7.42.0", "latency": 0.0011204, "time": "2024-10-30T13:12:19Z"}
+2024-10-30T21:12:35.910+0800	info	zap@v1.1.4/zap.go:117	/api/developers/lightvector	{"status": 200, "method": "GET", "path": "/api/developers/lightvector", "query": "", "ip": "127.0.0.1", "user-agent": "PostmanRuntime/7.42.0", "latency": 0.0042445, "time": "2024-10-30T13:12:35Z"}
+2024-10-30T21:22:46.440+0800	info	zap@v1.1.4/zap.go:117	/api/developers/lightvector	{"status": 200, "method": "GET", "path": "/api/developers/lightvector", "query": "", "ip": "127.0.0.1", "user-agent": "PostmanRuntime/7.42.0", "latency": 0, "time": "2024-10-30T13:22:46Z"}
+2024-10-30T21:22:57.751+0800	info	backend/main.go:53	Shutdown Server ...
+2024-10-30T21:22:57.752+0800	info	backend/main.go:59	Server exiting
+2024-10-30T21:24:54.498+0800	info	postgres/postgres.go:53	running on database mode
+2024-10-30T21:25:05.995+0800	info	zap@v1.1.4/zap.go:117	/api/developers/lightvector	{"status": 200, "method": "GET", "path": "/api/developers/lightvector", "query": "", "ip": "127.0.0.1", "user-agent": "PostmanRuntime/7.42.0", "latency": 0.0005091, "time": "2024-10-30T13:25:05Z"}
+2024-10-30T21:25:09.669+0800	info	zap@v1.1.4/zap.go:117	/api/developers/lightvector	{"status": 200, "method": "GET", "path": "/api/developers/lightvector", "query": "", "ip": "127.0.0.1", "user-agent": "PostmanRuntime/7.42.0", "latency": 0.0001621, "time": "2024-10-30T13:25:09Z"}
+2024-10-30T21:25:15.153+0800	info	zap@v1.1.4/zap.go:117	/api/developers/lightvector	{"status": 200, "method": "GET", "path": "/api/developers/lightvector", "query": "", "ip": "127.0.0.1", "user-agent": "PostmanRuntime/7.42.0", "latency": 0, "time": "2024-10-30T13:25:15Z"}
+2024-10-30T21:25:18.467+0800	info	zap@v1.1.4/zap.go:117	/api/developers/lightvector	{"status": 200, "method": "GET", "path": "/api/developers/lightvector", "query": "", "ip": "127.0.0.1", "user-agent": "PostmanRuntime/7.42.0", "latency": 0.0005085, "time": "2024-10-30T13:25:18Z"}
+2024-10-30T21:25:19.643+0800	info	zap@v1.1.4/zap.go:117	/api/developers/lightvector	{"status": 200, "method": "GET", "path": "/api/developers/lightvector", "query": "", "ip": "127.0.0.1", "user-agent": "PostmanRuntime/7.42.0", "latency": 0.000553, "time": "2024-10-30T13:25:19Z"}
+2024-10-30T21:25:20.745+0800	info	zap@v1.1.4/zap.go:117	/api/developers/lightvector	{"status": 200, "method": "GET", "path": "/api/developers/lightvector", "query": "", "ip": "127.0.0.1", "user-agent": "PostmanRuntime/7.42.0", "latency": 0, "time": "2024-10-30T13:25:20Z"}
+2024-10-30T21:25:21.982+0800	info	zap@v1.1.4/zap.go:117	/api/developers/lightvector	{"status": 200, "method": "GET", "path": "/api/developers/lightvector", "query": "", "ip": "127.0.0.1", "user-agent": "PostmanRuntime/7.42.0", "latency": 0, "time": "2024-10-30T13:25:21Z"}
+2024-10-30T21:25:23.347+0800	info	zap@v1.1.4/zap.go:117	/api/developers/lightvector	{"status": 200, "method": "GET", "path": "/api/developers/lightvector", "query": "", "ip": "127.0.0.1", "user-agent": "PostmanRuntime/7.42.0", "latency": 0.0003452, "time": "2024-10-30T13:25:23Z"}
+2024-10-30T21:25:24.596+0800	info	zap@v1.1.4/zap.go:117	/api/developers/lightvector	{"status": 200, "method": "GET", "path": "/api/developers/lightvector", "query": "", "ip": "127.0.0.1", "user-agent": "PostmanRuntime/7.42.0", "latency": 0.0003203, "time": "2024-10-30T13:25:24Z"}
+2024-10-30T21:25:25.576+0800	info	zap@v1.1.4/zap.go:117	/api/developers/lightvector	{"status": 200, "method": "GET", "path": "/api/developers/lightvector", "query": "", "ip": "127.0.0.1", "user-agent": "PostmanRuntime/7.42.0", "latency": 0, "time": "2024-10-30T13:25:25Z"}
+2024-10-30T21:25:26.603+0800	info	zap@v1.1.4/zap.go:117	/api/developers/lightvector	{"status": 200, "method": "GET", "path": "/api/developers/lightvector", "query": "", "ip": "127.0.0.1", "user-agent": "PostmanRuntime/7.42.0", "latency": 0.0006257, "time": "2024-10-30T13:25:26Z"}
+2024-10-30T21:25:38.435+0800	info	zap@v1.1.4/zap.go:117	/api/developers/lightvector	{"status": 200, "method": "GET", "path": "/api/developers/lightvector", "query": "", "ip": "127.0.0.1", "user-agent": "PostmanRuntime/7.42.0", "latency": 0, "time": "2024-10-30T13:25:38Z"}
+2024-10-30T21:26:02.319+0800	info	zap@v1.1.4/zap.go:117	/api/developers/lightvector	{"status": 200, "method": "GET", "path": "/api/developers/lightvector", "query": "", "ip": "127.0.0.1", "user-agent": "PostmanRuntime/7.42.0", "latency": 0.0010161, "time": "2024-10-30T13:26:02Z"}
+2024-10-30T21:26:42.624+0800	info	backend/main.go:53	Shutdown Server ...
+2024-10-30T21:26:42.624+0800	info	backend/main.go:59	Server exiting
+2024-10-30T21:28:59.995+0800	info	postgres/postgres.go:53	running on database mode
+2024-10-30T21:29:50.772+0800	info	backend/main.go:53	Shutdown Server ...
+2024-10-30T21:29:50.772+0800	info	backend/main.go:59	Server exiting
+2024-10-30T21:37:48.114+0800	info	postgres/postgres.go:53	running on database mode
+2024-10-30T21:38:00.118+0800	info	zap@v1.1.4/zap.go:117	/api/developers/fuhaoda	{"status": 200, "method": "GET", "path": "/api/developers/fuhaoda", "query": "", "ip": "127.0.0.1", "user-agent": "PostmanRuntime/7.42.0", "latency": 0, "time": "2024-10-30T13:38:00Z"}
+2024-10-30T21:38:08.362+0800	info	zap@v1.1.4/zap.go:117	/api/developers/fuhaoda	{"status": 200, "method": "GET", "path": "/api/developers/fuhaoda", "query": "", "ip": "127.0.0.1", "user-agent": "PostmanRuntime/7.42.0", "latency": 0.0007878, "time": "2024-10-30T13:38:08Z"}
+2024-10-30T21:40:05.282+0800	info	zap@v1.1.4/zap.go:117	/api/developers/fuhaoda	{"status": 200, "method": "GET", "path": "/api/developers/fuhaoda", "query": "", "ip": "127.0.0.1", "user-agent": "PostmanRuntime/7.42.0", "latency": 0.0005067, "time": "2024-10-30T13:40:05Z"}
+2024-10-30T21:40:26.018+0800	info	backend/main.go:53	Shutdown Server ...
+2024-10-30T21:40:26.019+0800	info	backend/main.go:59	Server exiting
+2024-10-30T21:40:30.636+0800	info	postgres/postgres.go:53	running on database mode
+2024-10-30T21:40:53.574+0800	info	zap@v1.1.4/zap.go:117	/api/developers/zhuyuzhu	{"status": 200, "method": "GET", "path": "/api/developers/zhuyuzhu", "query": "", "ip": "127.0.0.1", "user-agent": "PostmanRuntime/7.42.0", "latency": 0.0002262, "time": "2024-10-30T13:40:53Z"}
+2024-10-30T21:41:28.328+0800	info	zap@v1.1.4/zap.go:117	/api/developers/zhuyuzhu	{"status": 200, "method": "GET", "path": "/api/developers/zhuyuzhu", "query": "", "ip": "127.0.0.1", "user-agent": "PostmanRuntime/7.42.0", "latency": 0.0009988, "time": "2024-10-30T13:41:28Z"}
+2024-10-30T21:42:00.376+0800	info	backend/main.go:53	Shutdown Server ...
+2024-10-30T21:42:00.377+0800	info	backend/main.go:59	Server exiting
+2024-10-30T21:42:06.111+0800	info	postgres/postgres.go:53	running on database mode
+2024-10-30T21:42:32.482+0800	info	zap@v1.1.4/zap.go:117	/api/developers/talkgo	{"status": 200, "method": "GET", "path": "/api/developers/talkgo", "query": "", "ip": "127.0.0.1", "user-agent": "PostmanRuntime/7.42.0", "latency": 0.0003475, "time": "2024-10-30T13:42:32Z"}
+2024-10-30T21:42:52.595+0800	info	zap@v1.1.4/zap.go:117	/api/developers/talkgo	{"status": 200, "method": "GET", "path": "/api/developers/talkgo", "query": "", "ip": "127.0.0.1", "user-agent": "PostmanRuntime/7.42.0", "latency": 0.0001884, "time": "2024-10-30T13:42:52Z"}
+2024-10-30T21:44:05.654+0800	info	backend/main.go:53	Shutdown Server ...
+2024-10-30T21:44:05.654+0800	info	backend/main.go:59	Server exiting
+2024-10-30T21:44:10.035+0800	info	postgres/postgres.go:53	running on database mode
+2024-10-30T21:44:19.326+0800	info	zap@v1.1.4/zap.go:117	/api/developers/talkgo	{"status": 200, "method": "GET", "path": "/api/developers/talkgo", "query": "", "ip": "127.0.0.1", "user-agent": "PostmanRuntime/7.42.0", "latency": 0.0005019, "time": "2024-10-30T13:44:19Z"}
+2024-10-30T21:45:03.141+0800	info	backend/main.go:53	Shutdown Server ...
+2024-10-30T21:45:03.142+0800	info	backend/main.go:59	Server exiting
+2024-10-30T21:47:27.146+0800	info	postgres/postgres.go:53	running on database mode
+2024-10-30T21:48:01.676+0800	info	zap@v1.1.4/zap.go:117	/api/developers/ollama	{"status": 200, "method": "GET", "path": "/api/developers/ollama", "query": "", "ip": "127.0.0.1", "user-agent": "PostmanRuntime/7.42.0", "latency": 0.0009695, "time": "2024-10-30T13:48:01Z"}
+2024-10-30T21:48:13.657+0800	info	zap@v1.1.4/zap.go:117	/api/developers/ollama	{"status": 200, "method": "GET", "path": "/api/developers/ollama", "query": "", "ip": "127.0.0.1", "user-agent": "PostmanRuntime/7.42.0", "latency": 0.0005119, "time": "2024-10-30T13:48:13Z"}
+2024-10-30T21:50:09.523+0800	info	zap@v1.1.4/zap.go:117	/api/developers/kubernetes	{"status": 200, "method": "GET", "path": "/api/developers/kubernetes", "query": "", "ip": "127.0.0.1", "user-agent": "PostmanRuntime/7.42.0", "latency": 0.0005276, "time": "2024-10-30T13:50:09Z"}
+2024-10-30T21:50:52.591+0800	info	zap@v1.1.4/zap.go:117	/api/developers/kubernetes	{"status": 200, "method": "GET", "path": "/api/developers/kubernetes", "query": "", "ip": "127.0.0.1", "user-agent": "PostmanRuntime/7.42.0", "latency": 0.0004571, "time": "2024-10-30T13:50:52Z"}
+2024-10-30T22:31:12.690+0800	info	backend/main.go:53	Shutdown Server ...
+2024-10-30T22:31:12.692+0800	info	backend/main.go:59	Server exiting
+2024-11-01T22:37:00.715+0800	info	postgres/postgres.go:53	running on database mode
+2024-11-01T23:03:27.132+0800	info	zap@v1.1.4/zap.go:117	/api/developers/kubernetes	{"status": 200, "method": "GET", "path": "/api/developers/kubernetes", "query": "", "ip": "127.0.0.1", "user-agent": "PostmanRuntime/7.42.0", "latency": 0.0000631, "time": "2024-11-01T15:03:27Z"}
+2024-11-01T23:17:18.497+0800	info	zap@v1.1.4/zap.go:117	/api/api/developers/lightvector	{"status": 404, "method": "GET", "path": "/api/api/developers/lightvector", "query": "", "ip": "127.0.0.1", "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36 Edg/130.0.0.0", "latency": 0.0005081, "time": "2024-11-01T15:17:18Z"}
+2024-11-01T23:17:34.618+0800	info	zap@v1.1.4/zap.go:117	/api/api/developers/lightvector	{"status": 404, "method": "GET", "path": "/api/api/developers/lightvector", "query": "", "ip": "127.0.0.1", "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36 Edg/130.0.0.0", "latency": 0, "time": "2024-11-01T15:17:34Z"}
+2024-11-01T23:17:58.046+0800	info	zap@v1.1.4/zap.go:117	/api/developers/lightvector	{"status": 200, "method": "GET", "path": "/api/developers/lightvector", "query": "", "ip": "127.0.0.1", "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36 Edg/130.0.0.0", "latency": 0, "time": "2024-11-01T15:17:58Z"}
+2024-11-01T23:21:44.411+0800	info	backend/main.go:53	Shutdown Server ...
+2024-11-01T23:21:44.411+0800	info	backend/main.go:59	Server exiting
+2024-11-01T23:21:48.036+0800	info	postgres/postgres.go:53	running on database mode
+2024-11-01T23:21:54.938+0800	info	zap@v1.1.4/zap.go:117	/api/developers/lightvector	{"status": 200, "method": "GET", "path": "/api/developers/lightvector", "query": "", "ip": "127.0.0.1", "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36 Edg/130.0.0.0", "latency": 0.0010125, "time": "2024-11-01T15:21:54Z"}
+2024-11-01T23:23:55.353+0800	info	zap@v1.1.4/zap.go:117	/api/developers/lightvector	{"status": 200, "method": "GET", "path": "/api/developers/lightvector", "query": "", "ip": "127.0.0.1", "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36 Edg/130.0.0.0", "latency": 0.0005096, "time": "2024-11-01T15:23:55Z"}
+2024-11-01T23:25:27.377+0800	info	backend/main.go:53	Shutdown Server ...
+2024-11-01T23:25:27.377+0800	info	backend/main.go:59	Server exiting
+2024-11-01T23:25:31.516+0800	info	postgres/postgres.go:53	running on database mode
+2024-11-01T23:25:47.920+0800	info	zap@v1.1.4/zap.go:117	/api/test	{"status": 200, "method": "GET", "path": "/api/test", "query": "", "ip": "127.0.0.1", "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36 Edg/130.0.0.0", "latency": 0.000539, "time": "2024-11-01T15:25:47Z"}
+2024-11-01T23:27:28.909+0800	info	backend/main.go:53	Shutdown Server ...
+2024-11-01T23:27:28.909+0800	info	backend/main.go:59	Server exiting
+2024-11-01T23:27:32.332+0800	info	postgres/postgres.go:53	running on database mode
+2024-11-01T23:27:34.939+0800	info	zap@v1.1.4/zap.go:117	/api/test	{"status": 200, "method": "GET", "path": "/api/test", "query": "", "ip": "127.0.0.1", "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36 Edg/130.0.0.0", "latency": 0.0005736, "time": "2024-11-01T15:27:34Z"}
+2024-11-01T23:30:34.480+0800	info	backend/main.go:53	Shutdown Server ...
+2024-11-01T23:30:34.480+0800	info	backend/main.go:59	Server exiting
+2024-11-01T23:30:38.199+0800	info	postgres/postgres.go:53	running on database mode
+2024-11-01T23:30:40.553+0800	info	zap@v1.1.4/zap.go:117	/api/test	{"status": 200, "method": "GET", "path": "/api/test", "query": "", "ip": "127.0.0.1", "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36 Edg/130.0.0.0", "latency": 0, "time": "2024-11-01T15:30:40Z"}
+2024-11-01T23:33:36.278+0800	info	backend/main.go:53	Shutdown Server ...
+2024-11-01T23:33:36.278+0800	info	backend/main.go:59	Server exiting
+2024-11-01T23:33:39.401+0800	info	postgres/postgres.go:53	running on database mode
+2024-11-01T23:33:47.787+0800	info	zap@v1.1.4/zap.go:117	/api/test	{"status": 200, "method": "GET", "path": "/api/test", "query": "", "ip": "127.0.0.1", "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36 Edg/130.0.0.0", "latency": 0, "time": "2024-11-01T15:33:47Z"}
+2024-11-01T23:35:43.866+0800	info	backend/main.go:53	Shutdown Server ...
+2024-11-01T23:35:43.866+0800	info	backend/main.go:59	Server exiting
+2024-11-01T23:35:47.000+0800	info	postgres/postgres.go:53	running on database mode
+2024-11-01T23:35:50.264+0800	info	zap@v1.1.4/zap.go:117	/api/test	{"status": 200, "method": "GET", "path": "/api/test", "query": "", "ip": "127.0.0.1", "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36 Edg/130.0.0.0", "latency": 0, "time": "2024-11-01T15:35:50Z"}
+2024-11-01T23:36:08.653+0800	info	zap@v1.1.4/zap.go:117	/api/developers/lightvector	{"status": 200, "method": "GET", "path": "/api/developers/lightvector", "query": "", "ip": "127.0.0.1", "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36 Edg/130.0.0.0", "latency": 0.0005091, "time": "2024-11-01T15:36:08Z"}
+2024-11-01T23:37:26.949+0800	info	backend/main.go:53	Shutdown Server ...
+2024-11-01T23:37:26.949+0800	info	backend/main.go:59	Server exiting
+2024-11-01T23:37:30.276+0800	info	postgres/postgres.go:53	running on database mode
+2024-11-01T23:37:35.423+0800	info	zap@v1.1.4/zap.go:117	/api/developers/lightvector	{"status": 200, "method": "GET", "path": "/api/developers/lightvector", "query": "", "ip": "127.0.0.1", "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36 Edg/130.0.0.0", "latency": 0.0005125, "time": "2024-11-01T15:37:35Z"}
+2024-11-01T23:38:13.448+0800	info	zap@v1.1.4/zap.go:117	/api/developers/lightvector	{"status": 200, "method": "GET", "path": "/api/developers/lightvector", "query": "", "ip": "127.0.0.1", "user-agent": "PostmanRuntime/7.42.0", "latency": 0, "time": "2024-11-01T15:38:13Z"}
+2024-11-01T23:38:34.497+0800	info	zap@v1.1.4/zap.go:117	/api/developers/fuhaoda	{"status": 200, "method": "GET", "path": "/api/developers/fuhaoda", "query": "", "ip": "127.0.0.1", "user-agent": "PostmanRuntime/7.42.0", "latency": 0.0005702, "time": "2024-11-01T15:38:34Z"}
+2024-11-01T23:38:55.054+0800	info	backend/main.go:53	Shutdown Server ...
+2024-11-01T23:38:55.054+0800	info	backend/main.go:59	Server exiting
+2024-11-01T23:38:58.152+0800	info	postgres/postgres.go:53	running on database mode
+2024-11-01T23:39:00.383+0800	info	zap@v1.1.4/zap.go:117	/api/developers/fuhaoda	{"status": 200, "method": "GET", "path": "/api/developers/fuhaoda", "query": "", "ip": "127.0.0.1", "user-agent": "PostmanRuntime/7.42.0", "latency": 0.0005276, "time": "2024-11-01T15:39:00Z"}
+2024-11-01T23:40:11.619+0800	info	backend/main.go:53	Shutdown Server ...
+2024-11-01T23:40:11.620+0800	info	backend/main.go:59	Server exiting
+2024-11-01T23:40:14.856+0800	info	postgres/postgres.go:53	running on database mode
+2024-11-01T23:40:17.002+0800	info	zap@v1.1.4/zap.go:117	/api/developers/fuhaoda	{"status": 200, "method": "GET", "path": "/api/developers/fuhaoda", "query": "", "ip": "127.0.0.1", "user-agent": "PostmanRuntime/7.42.0", "latency": 0.0005056, "time": "2024-11-01T15:40:17Z"}
+2024-11-01T23:43:42.366+0800	info	backend/main.go:53	Shutdown Server ...
+2024-11-01T23:43:42.367+0800	info	backend/main.go:59	Server exiting
+2024-11-01T23:43:45.544+0800	info	postgres/postgres.go:53	running on database mode
+2024-11-01T23:44:39.291+0800	info	backend/main.go:53	Shutdown Server ...
+2024-11-01T23:44:39.291+0800	info	backend/main.go:59	Server exiting
+2024-11-01T23:44:42.401+0800	info	postgres/postgres.go:53	running on database mode
+2024-11-01T23:44:46.457+0800	info	zap@v1.1.4/zap.go:117	/api/developers/fuhaoda	{"status": 200, "method": "GET", "path": "/api/developers/fuhaoda", "query": "", "ip": "127.0.0.1", "user-agent": "PostmanRuntime/7.42.0", "latency": 0.0003478, "time": "2024-11-01T15:44:46Z"}
+2024-11-01T23:53:09.946+0800	info	zap@v1.1.4/zap.go:117	/api/developers/lightvector	{"status": 200, "method": "GET", "path": "/api/developers/lightvector", "query": "", "ip": "127.0.0.1", "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36 Edg/130.0.0.0", "latency": 0, "time": "2024-11-01T15:53:09Z"}
+2024-11-02T00:07:44.850+0800	info	zap@v1.1.4/zap.go:117	/api/developers/lightvector	{"status": 200, "method": "GET", "path": "/api/developers/lightvector", "query": "", "ip": "127.0.0.1", "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36 Edg/130.0.0.0", "latency": 0.0007303, "time": "2024-11-01T16:07:44Z"}
+2024-11-02T00:09:03.670+0800	info	zap@v1.1.4/zap.go:117	/api/developers/lightvector	{"status": 200, "method": "GET", "path": "/api/developers/lightvector", "query": "", "ip": "127.0.0.1", "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36 Edg/130.0.0.0", "latency": 0, "time": "2024-11-01T16:09:03Z"}
+2024-11-02T00:09:32.201+0800	info	zap@v1.1.4/zap.go:117	/api/developers/lightvector	{"status": 200, "method": "GET", "path": "/api/developers/lightvector", "query": "", "ip": "127.0.0.1", "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36 Edg/130.0.0.0", "latency": 0, "time": "2024-11-01T16:09:32Z"}
+2024-11-02T00:09:52.828+0800	info	zap@v1.1.4/zap.go:117	/api/developers/lightvector	{"status": 200, "method": "GET", "path": "/api/developers/lightvector", "query": "", "ip": "127.0.0.1", "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36 Edg/130.0.0.0", "latency": 0, "time": "2024-11-01T16:09:52Z"}
+2024-11-02T00:10:34.049+0800	info	zap@v1.1.4/zap.go:117	/api/developers/lightvector	{"status": 200, "method": "GET", "path": "/api/developers/lightvector", "query": "", "ip": "127.0.0.1", "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36 Edg/130.0.0.0", "latency": 0, "time": "2024-11-01T16:10:34Z"}
+2024-11-02T00:12:07.864+0800	info	zap@v1.1.4/zap.go:117	/api/developers/lightvector	{"status": 200, "method": "GET", "path": "/api/developers/lightvector", "query": "", "ip": "127.0.0.1", "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36 Edg/130.0.0.0", "latency": 0, "time": "2024-11-01T16:12:07Z"}
+2024-11-02T00:13:19.002+0800	info	zap@v1.1.4/zap.go:117	/api/developers/lightvector	{"status": 200, "method": "GET", "path": "/api/developers/lightvector", "query": "", "ip": "127.0.0.1", "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36 Edg/130.0.0.0", "latency": 0, "time": "2024-11-01T16:13:19Z"}
+2024-11-02T00:13:26.846+0800	info	zap@v1.1.4/zap.go:117	/api/developers/1	{"status": 200, "method": "GET", "path": "/api/developers/1", "query": "", "ip": "127.0.0.1", "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36 Edg/130.0.0.0", "latency": 0, "time": "2024-11-01T16:13:26Z"}
+2024-11-02T00:14:30.308+0800	info	zap@v1.1.4/zap.go:117	/api/developers/1	{"status": 200, "method": "GET", "path": "/api/developers/1", "query": "", "ip": "127.0.0.1", "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36 Edg/130.0.0.0", "latency": 0, "time": "2024-11-01T16:14:30Z"}
+2024-11-02T00:18:32.970+0800	info	backend/main.go:53	Shutdown Server ...
+2024-11-02T00:18:32.972+0800	info	backend/main.go:59	Server exiting
+2024-11-02T16:13:22.107+0800	info	postgres/postgres.go:53	running on database mode

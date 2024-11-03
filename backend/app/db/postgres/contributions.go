@@ -5,10 +5,11 @@ import (
 	"go.uber.org/zap"
 )
 
-func InsertContributions(githubId int64, login string, repoId int64, fullName string, cons float64, talent float64) error {
+func InsertContributions(githubId int64, login string, fork bool, repoId int64, fullName string, cons float64, talent float64) error {
 	con := models.ContributionsStored{
 		DeveloperGithubId: githubId,
 		DeveloperLogin:    login,
+		Fork:              fork,
 		RepoGithubId:      repoId,
 		RepoFullName:      fullName,
 		Contributions:     cons,
@@ -26,8 +27,8 @@ func InsertContributions(githubId int64, login string, repoId int64, fullName st
 }
 
 func GetContributionsByDeveloper(githubLogin string) ([]models.ContributionsStored, error) {
-	cons := make([]models.ContributionsStored, 0)
-	res := pdb.Order("talent_score").Find(&cons, "developer_github_id = ?", githubLogin)
+	var cons []models.ContributionsStored
+	res := pdb.Order("talent_score desc").Find(&cons, "developer_login = ?", githubLogin)
 	if res.Error != nil {
 		zap.L().Error("get contributions by developer failed", zap.Error(res.Error))
 		return []models.ContributionsStored{}, res.Error

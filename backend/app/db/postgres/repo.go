@@ -43,8 +43,8 @@ func InsertRepo(repo models.Repos) error {
 			continue
 		}
 	}
-	CacheRepos[repo.FullName] = &stored
 	CacheReposSet.Store(repo.FullName, DataStored)
+	CacheRepos[repo.FullName] = stored
 	return nil
 }
 

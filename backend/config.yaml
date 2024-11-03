@@ -1,8 +1,8 @@
 name: "gitawa"
 mode: "dev"
-port: 20721
-version: "0.0.1"
-start_time: "2024-10-07"
+port: 14514
+version: "0.1.1"
+start_time: "2024-10-30"
 machine_id: 1
 github_access_token: ""
 

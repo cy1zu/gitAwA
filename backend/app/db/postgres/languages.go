@@ -30,14 +30,14 @@ func InsertLanguages(insType string, objectId int64, objectFullName string, lang
 }
 
 func GetLanguages(recType string, id int64) (map[string]int64, error) {
-	data := make([]models.LanguageStored, 0)
-	res := pdb.Order("size").Find(&data, "type = ? and id = ?", recType, id)
+	var data []models.LanguageStored
+	res := pdb.Find(&data, "type = ? and object_id = ?", recType, id)
 	if errors.Is(res.Error, gorm.ErrRecordNotFound) {
 		return nil, nil
 	}
 	if res.Error != nil {
-		zap.L().Error("postgres.GetLanguages failed", zap.Error(res.Error))
-		return nil, nil
+		zap.L().Debug("postgres.GetLanguages failed", zap.Error(res.Error))
+		return nil, res.Error
 	}
 
 	languages := make(map[string]int64)

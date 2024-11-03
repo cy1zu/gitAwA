@@ -1,23 +1,23 @@
 package services
 
 import (
-	"backend/app/api"
 	"backend/app/awa"
 	"backend/app/db/postgres"
+	"backend/app/models"
 )
 
-func GetDeveloperServices(githubLogin string, token *string) (*api.DeveloperApi, error) {
+func GetDeveloperServices(githubLogin string, token *string) (models.DeveloperApi, error) {
 	status, ok := postgres.CacheDevelopersSet.Load(githubLogin)
+	println(status, ok)
 	if !ok {
 		if *token != "" {
 			go awa.FetchDeveloper(githubLogin, token)
 		}
-		return &api.DeveloperApi{}, ErrorDataNeedFetch
+		return models.DeveloperApi{}, ErrorDataNeedFetch
 	}
 	if status == postgres.DataProcessing {
-		return &api.DeveloperApi{}, ErrorDataProcessing
+		return models.DeveloperApi{}, ErrorDataProcessing
 	}
 	dev := postgres.CacheDevelopers[githubLogin]
-
 	return dev, nil
 }

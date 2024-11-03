@@ -15,8 +15,16 @@ func GetDeveloperHandler(c *gin.Context) {
 		return
 	}
 	data, err := services.GetDeveloperServices(developerLogin, &githubToken)
-	if errors.Is(err, services.ErrorDataNeedFetch) || errors.Is(err, services.ErrorDataProcessing) {
-		c.JSON(http.StatusOK, err)
+	if errors.Is(err, services.ErrorDataNeedFetch) {
+		c.JSON(http.StatusOK, gin.H{
+			"msg": "developer data need fetch",
+		})
+		return
+	}
+	if errors.Is(err, services.ErrorDataProcessing) {
+		c.JSON(http.StatusOK, gin.H{
+			"msg": "developer data processing",
+		})
 		return
 	}
 	if err != nil {

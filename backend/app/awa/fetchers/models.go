@@ -1,6 +1,22 @@
 package fetchers
 
-import "time"
+import (
+	"backend/app/models"
+	"time"
+)
+
+type CommentItems struct {
+	Comments []Comment `json:"items"`
+}
+type Comment struct {
+	User        models.MiniDeveloper `json:"user"`
+	TimelineUrl string               `json:"timeline_url"`
+}
+type CommentLines struct {
+	Event string               `json:"event" comment:"should be commented"`
+	User  models.MiniDeveloper `json:"user"`
+	Body  string               `json:"body"`
+}
 
 type DeveloperFull struct {
 	Login            string      `json:"login"`
