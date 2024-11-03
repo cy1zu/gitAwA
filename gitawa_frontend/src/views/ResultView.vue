@@ -12,12 +12,12 @@
                 <div> <el-icon style="opacity: 80%; margin-bottom: 2vh;" :size="20"><LocationInformation /></el-icon> <el-text>{{ localtion }} </el-text> </div>
                 <div><el-text>Score: {{ talentRank }}</el-text>  </div>
             </div>
-            <el-divider direction="vertical" style="margin: 4vw;" />
+            <el-divider direction="vertical" style="margin: 3.5vw;" />
             <div style="width: 70vw;">
                 Content
                 <el-row :gutter="24" justify="space-around">
-                
-                    <RepoCard :title="Title1" />
+                    
+                    <RepoCard :title="'title1'" />
                     <RepoCard />
                     <RepoCard />
                     <RepoCard />
@@ -49,7 +49,7 @@
         userData.value = res.data
 
         nickname.value = userData.value.name
-        talentRank.value = userData.value.talent_rank
+        talentRank.value = Number(userData.value.talent_rank).toFixed(3).toString()
         localtion.value = userData.value.localtion
         if (userData.value.localtion == null) {
             localtion.value = 'N/A'

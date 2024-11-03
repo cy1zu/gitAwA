@@ -16,7 +16,7 @@
                     </el-select>
                 </template>
                 <template #append>
-                    <el-button :icon="Search" />
+                    <el-button :icon="Search" @click="search" />
                 </template>
             </el-input>
         </div>
