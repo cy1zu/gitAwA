@@ -4,7 +4,8 @@
         <div class="mt-4">
             <el-input
             size="large"
-            v-model="githubLogin"
+            v-model="queryStr"
+
             style="max-width: 65vw"
             class="input-with-select"
             >
@@ -12,7 +13,7 @@
                     <el-select v-model="select" placeholder="Select" style="width: 15vw" size="large" >
                         <el-option label="Developers" value="1" />
                         <el-option label="Languages" value="2" />
-                        <el-option label="Natons" value="3" />
+                        <el-option label="Nations" value="3" />
                     </el-select>
                 </template>
                 <template #append>
@@ -27,20 +28,42 @@
     import { useRouter } from 'vue-router'
     import { ref } from 'vue'
     import { Search } from '@element-plus/icons-vue'
+    const props = defineProps({
+        select:{
+            type: String,
+            default: '1'
+        }
+    })
 
-    const select = ref('')
+    const select = ref(props.select)
+
     const router = useRouter()
-    const githubLogin = ref('')
+    const queryStr = ref('')
     const search = () => {
-        console.log(githubLogin.value)
-        router.replace({
-            path: '/result',
-            query: {
-                login: githubLogin.value
-            }
-        }).then(() => {
-            // 重新刷新页面
-            location.reload()
-        })
+        if (select.value == 1) {
+            console.log(queryStr.value)
+            router.replace({
+                path: '/result',
+                query: {
+                    login: queryStr.value
+                }
+            }).then(() => {
+                // 重新刷新页面
+                location.reload()
+            })
+        }
+        else if (select.value == 2) {
+            router.replace({
+                path: '/language',
+                query: {
+                    q: queryStr.value
+                }
+            }).then(() => {
+                // 重新刷新页面
+                location.reload()
+            })
+        }
+
+        
     }
 </script>
