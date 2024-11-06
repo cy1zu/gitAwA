@@ -2,7 +2,7 @@
     <div v-loading="loading">
         <SearchBar :select="'2'"/>
         
-        <div style="display: flex; margin: 3%; margin-top: 4.5vw; margin-left: 3.5vw" v-show="allpage">
+        <div style="display: flex; margin: 3%; margin-top: 4.5vw; margin-left: 3.5vw; margin-bottom: 1%;" v-show="allpage">
             <el-row>
                 <DevCard />
                 <DevCard />
@@ -18,7 +18,8 @@
             
 
         </div>
-        
+
+        <el-pagination style="margin-left: 30vw;" layout="prev, pager, next" :total="5000" />
         
 
         

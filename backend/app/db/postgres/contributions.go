@@ -5,13 +5,14 @@ import (
 	"go.uber.org/zap"
 )
 
-func InsertContributions(githubId int64, login string, fork bool, repoId int64, fullName string, cons float64, talent float64) error {
+func InsertContributions(githubId int64, login string, fork bool, repoId int64, fullName string, stars int64, cons float64, talent float64) error {
 	con := models.ContributionsStored{
 		DeveloperGithubId: githubId,
 		DeveloperLogin:    login,
 		Fork:              fork,
 		RepoGithubId:      repoId,
 		RepoFullName:      fullName,
+		StargazersCount:   stars,
 		Contributions:     cons,
 		TalentScore:       talent,
 	}

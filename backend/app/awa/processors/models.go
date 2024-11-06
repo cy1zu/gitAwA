@@ -32,7 +32,7 @@ type ParsedRepos struct {
 	CreatedAt       time.Time               `json:"created_at"`
 	UpdatedAt       time.Time               `json:"updated_at"`
 	PushedAt        time.Time               `json:"pushed_at"`
-	Size            int                     `json:"size"`
-	StargazersCount int                     `json:"stargazers_count"`
+	Size            int64                   `json:"size"`
+	StargazersCount int64                   `json:"stargazers_count"`
 	Parent          *models.MiniRepo        `json:"parent"`
 }

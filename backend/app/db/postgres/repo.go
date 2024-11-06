@@ -19,9 +19,6 @@ func InsertRepo(repo models.Repos) error {
 		OwnerId:         repo.Owner.Id,
 		OwnerLogin:      repo.Owner.Login,
 		Fork:            repo.Fork,
-		CreatedAt:       repo.CreatedAt,
-		UpdatedAt:       repo.UpdatedAt,
-		PushedAt:        repo.PushedAt,
 		Size:            repo.Size,
 		StargazersCount: repo.StargazersCount,
 	}

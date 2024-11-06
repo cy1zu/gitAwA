@@ -10,7 +10,7 @@ import (
 func TestFinalDevelopers(t *testing.T) {
 	githubToken := new(string)
 	*githubToken = "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"
-	res, err := fetchers.GetDeveloperInfo("marysaka", githubToken)
+	res, err := fetchers.GetDeveloperInfo("Reinhare", githubToken)
 	if err != nil {
 		t.Error(err)
 	}

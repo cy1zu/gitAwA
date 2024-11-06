@@ -5,11 +5,17 @@ import (
 	"errors"
 	"github.com/gin-gonic/gin"
 	"net/http"
+	"strings"
 )
 
 func GetDeveloperHandler(c *gin.Context) {
 	developerLogin := c.Param("developerLogin")
-	githubToken := c.Request.Header.Get("x-github-token")
+	githubToken := c.GetHeader("Authorization")
+	if strings.HasPrefix(githubToken, "Bearer ") {
+		githubToken = githubToken[7:]
+	} else {
+		githubToken = ""
+	}
 	if developerLogin == "" {
 		c.JSON(http.StatusBadRequest, "")
 		return

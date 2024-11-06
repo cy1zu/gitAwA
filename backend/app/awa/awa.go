@@ -2,6 +2,7 @@ package awa
 
 import (
 	"backend/app/awa/fetchers"
+	"backend/app/awa/guessers"
 	"backend/app/awa/processors"
 	"backend/app/db/postgres"
 	"fmt"
@@ -35,6 +36,7 @@ func FetchDeveloper(githubId string, githubToken *string) {
 		postgres.CacheDevelopersSet.Delete(githubId)
 		return
 	}
+	developers.Nation = GuessNationByInfo(res, githubToken)
 	err = postgres.InsertDeveloper(&developers)
 	if err != nil {
 		zap.L().Error("postgres.InsertDeveloper failed", zap.Error(err))
@@ -51,26 +53,45 @@ func FetchDeveloper(githubId string, githubToken *string) {
 	fmt.Printf("awa %s use %.2fs to done\n", githubId, float64(time.Since(startTime)/time.Millisecond)/1000)
 }
 
-func ValueUserNation(ways string) {
+func GuessNationByInfo(dev *fetchers.DeveloperFull, githubToken *string) string {
+	comments, err := fetchers.GetDeveloperComments(dev.Login, githubToken)
+	if err != nil {
+		zap.L().Error("FetchDeveloperComments failed", zap.Error(err))
+		return ""
+	}
+	query := map[string]interface{}{
+		"url":      "https://github.com/" + dev.Login,
+		"Name":     dev.Name,
+		"Location": dev.Location,
+		"Company":  dev.Company,
+		"Blog":     dev.Blog,
+		"Email":    dev.Email,
+		"Comments": *comments,
+	}
+	head, err := guessers.Init()
+	if err != nil {
+		zap.L().Error("init guesser failed", zap.Error(err))
+		return ""
+	}
 
+	// TODO: guess nation by info use llm
+	res, err := guessers.GuessNation(head, query)
+	if err != nil {
+		zap.L().Error("guess nation failed", zap.Error(err))
+		return ""
+	}
+	if res.Value < 0.5 {
+		return "N/A"
+	}
+	return res.Nation
 }
 
-type dingdan struct {
-	id         int
-	user       string
-	itemInfoId string
-	pingid     string
-	nums       int
-	pic        string
-	wuliuid    string
-	wuliu      string
-	sstatus    string
-	finalprice string
-}
-
-type shop struct {
-	id       int
-	name     string
-	pingtype string
-	price    int
-}
+/*
+	{
+		"Name":     Wild Heart,
+		Location: Budapest,
+		Company:  Jimi System,
+		Blog:     ,
+		Email:    ,
+	}
+*/

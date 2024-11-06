@@ -15,15 +15,21 @@ func InsertDeveloper(dev *models.Developer) error {
 	developer := models.DeveloperStored{
 		GithubId:   dev.Id,
 		Login:      dev.Login,
-		Name:       dev.Name,
 		Type:       dev.Type,
-		Company:    dev.Company,
-		Blog:       dev.Blog,
-		Location:   dev.Location,
-		Email:      dev.Email,
-		CreatedAt:  dev.CreatedAt,
 		TalentRank: dev.TalentRank,
+		Nation:     dev.Nation,
 	}
+	if dev.Location == "" {
+		developer.Location = dev.Nation
+	}
+	topLang, topSize := "", int64(0)
+	for lang, size := range dev.Languages {
+		if size > topSize {
+			topLang = lang
+			topSize = size
+		}
+	}
+	developer.TopLanguages = topLang
 	res := pdb.Create(&developer)
 	if res.Error != nil {
 		zap.L().Error("insert user failed", zap.Error(res.Error))
@@ -39,9 +45,9 @@ func InsertDeveloper(dev *models.Developer) error {
 		}
 		// insert contributions
 		if repo.Fork == true {
-			err = InsertContributions(dev.Id, dev.Login, true, repo.Parent.Id, repo.Parent.FullName, repo.Contributions, repo.TalentScore)
+			err = InsertContributions(dev.Id, dev.Login, true, repo.Parent.Id, repo.Parent.FullName, repo.StargazersCount, repo.Contributions, repo.TalentScore)
 		} else {
-			err = InsertContributions(dev.Id, dev.Login, false, repo.Id, repo.FullName, repo.Contributions, repo.TalentScore)
+			err = InsertContributions(dev.Id, dev.Login, false, repo.Id, repo.FullName, repo.StargazersCount, repo.Contributions, repo.TalentScore)
 		}
 		if err != nil {
 			zap.L().Debug("InsertContributions failed", zap.Error(err),
@@ -74,4 +80,15 @@ func GetDeveloper(githubLogin string) (models.DeveloperStored, error) {
 		return developer, res.Error
 	}
 	return developer, nil
+}
+
+func GetDevelopersListByLanguages(lang string, start int, end int) (*[]models.DeveloperApi, error) {
+	var developers []models.DeveloperApi
+	res := pdb.Where("top_languages like ?", "%"+lang+"%").Find(&developers).
+		Order("talent_rank desc").
+		Limit(end - start).Offset(start)
+	if res.Error != nil && !errors.Is(res.Error, gorm.ErrRecordNotFound) {
+		return nil, res.Error
+	}
+	return &developers, nil
 }

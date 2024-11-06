@@ -23,7 +23,7 @@
             </el-header>
             <el-divider />
 
-            <el-main>
+            <el-main style="padding-bottom: 0;">
                 <RouterView />
             </el-main>
 

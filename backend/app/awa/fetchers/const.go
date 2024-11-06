@@ -2,5 +2,5 @@ package fetchers
 
 const (
 	MaxLineLength   = 64
-	MaxCommentLines = 16
+	MaxCommentLines = 8
 )

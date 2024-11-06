@@ -16,6 +16,7 @@ const (
 	DataNeverCalled = 0 + iota
 	DataProcessing
 	DataStored
+	DataUpdating
 )
 
 func CacheInit() error {
@@ -30,15 +31,9 @@ func CacheInit() error {
 	var err error
 	for _, dev := range devData {
 		detail := models.DeveloperApi{
-			Id:            dev.GithubId,
 			Login:         dev.Login,
 			Type:          dev.Type,
-			Name:          dev.Name,
-			Company:       dev.Company,
-			Blog:          dev.Blog,
 			Location:      dev.Location,
-			Email:         dev.Email,
-			CreatedAt:     dev.CreatedAt,
 			Languages:     nil,
 			Contributions: nil,
 			TalentRank:    dev.TalentRank,
@@ -67,15 +62,9 @@ func CacheInsertDeveloper(dev *models.Developer) error {
 		return nil
 	}
 	detail := models.DeveloperApi{
-		Id:            dev.Id,
 		Login:         dev.Login,
 		Type:          dev.Type,
-		Name:          dev.Name,
-		Company:       dev.Company,
-		Blog:          dev.Blog,
 		Location:      dev.Location,
-		Email:         dev.Email,
-		CreatedAt:     dev.CreatedAt,
 		Languages:     dev.Languages,
 		Contributions: nil,
 		TalentRank:    dev.TalentRank,
