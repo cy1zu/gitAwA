@@ -1,0 +1,27 @@
+name: "gitawa"
+mode: "dev"
+port: 14514
+version: "1.0.0"
+start_time: "2024-10-24"
+machine_id: 1
+test_github_access_token: ""
+llm_app_id: ""
+llm_access_token: ""
+
+log:
+  level: "debug"
+  mode: "dev"
+  filename: "gitawa.log"
+  max_size: 200
+  max_age: 30
+  max_backups: 5
+postgres:
+  ssl_mode: "prefer"
+  host: "127.0.0.1"
+  port: 5432
+  user: "postgres"
+  password: ""
+  database: "gitawa_db"
+  max_conns: 200
+  max_idle: 50
+
