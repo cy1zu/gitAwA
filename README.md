@@ -19,4 +19,4 @@
 ### 4.等待awa
 [![pAyrWAx.png](https://s21.ax1x.com/2024/11/07/pAyrWAx.png)](https://imgse.com/i/pAyrWAx)
 ### 5.数据处理完成后就可以查看用户的详细信息和技术力等级了！
-![[Pasted image 20241107214322.png]]
+[![pAyr2H1.png](https://s21.ax1x.com/2024/11/07/pAyr2H1.png)](https://imgse.com/i/pAyr2H1)
