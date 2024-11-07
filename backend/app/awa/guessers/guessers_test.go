@@ -11,12 +11,22 @@ func TestGuessNation(t *testing.T) {
 		t.Fatal(err)
 	}
 	query := map[string]interface{}{
+		"url":      "https://github.com/tiger1103",
 		"name":     "",
 		"company":  "",
 		"blog":     "",
-		"location": "Budapest",
+		"location": "",
 		"email":    "",
-		"comments": []string{},
+		"comments": []string{
+			"新版本验证码多了个返回参数，已修复",
+			"link就是数据库配置，驱动:用户名:密码@tcp(ip:端\ufffd\ufffd",
+			"支持，用户信息是存的redis，存的是jwt信息，conte",
+			"https://goframe.org/pages/viewpage.action?pageId=57183742\r\nhttp:",
+			"参考文档：https://goframe.org/pages/viewpage.action?pageId=",
+			"右上角点那个垃圾桶图标清下缓存，然后f12清下l",
+			"项目数据库文件 resource/data/gfast-v32.sql 创建数据\ufffd\ufffd",
+			"文档已上线，请查看readme中文档地址",
+		},
 	}
 	res, err := GuessNation(head, query)
 	if err != nil {

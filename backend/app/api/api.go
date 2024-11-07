@@ -17,9 +17,8 @@ func Init() *gin.Engine {
 	v1.GET("health", GetHealthHandler)
 
 	{
-		// v1.GET("developers", GetDeveloperListHandler)
 		v1.GET("developers/:developerLogin", GetDeveloperHandler)
-		v1.GET("languages", GetLanguageListHandler)
+		v1.GET("search", GetDeveloperListHandler)
 		v1.GET("test", TestHandler)
 	}
 

@@ -2,6 +2,7 @@ package processors
 
 import (
 	"backend/app/awa/fetchers"
+	"backend/config"
 	"encoding/json"
 	"fmt"
 	"testing"
@@ -10,7 +11,7 @@ import (
 func TestFinalDevelopers(t *testing.T) {
 	githubToken := new(string)
 	*githubToken = "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"
-	res, err := fetchers.GetDeveloperInfo("Reinhare", githubToken)
+	res, err := fetchers.GetDeveloperInfo("doggo", githubToken)
 	if err != nil {
 		t.Error(err)
 	}
@@ -28,6 +29,7 @@ func TestFinalDevelopers(t *testing.T) {
 
 func TestParseDevelopersData(t *testing.T) {
 	githubToken := new(string)
+	*githubToken = config.Conf.TestGithubAccessToken
 	res, err := fetchers.GetDeveloperInfo("lightvector", githubToken)
 	if err != nil {
 		t.Error(err)

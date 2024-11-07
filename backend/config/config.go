@@ -9,15 +9,17 @@ import (
 var Conf = new(AppConfig)
 
 type AppConfig struct {
-	Name              string `mapstructure:"name"`
-	Mode              string `mapstructure:"mode"`
-	Version           string `mapstructure:"version"`
-	Port              string `mapstructure:"port"`
-	StartTime         string `mapstructure:"start_time"`
-	MachineID         int64  `mapstructure:"machine_id"`
-	GithubAccessToken string `mapstructure:"github_access_token"`
-	*LogConfig        `mapstructure:"log"`
-	*PostgresConfig   `mapstructure:"Postgres"`
+	Name                  string `mapstructure:"name"`
+	Mode                  string `mapstructure:"mode"`
+	Version               string `mapstructure:"version"`
+	Port                  string `mapstructure:"port"`
+	StartTime             string `mapstructure:"start_time"`
+	MachineID             int64  `mapstructure:"machine_id"`
+	TestGithubAccessToken string `mapstructure:"test_github_access_token"`
+	LLMAppId              string `mapstructure:"llm_app_id"`
+	LLMAccessToken        string `mapstructure:"llm_access_token"`
+	*LogConfig            `mapstructure:"log"`
+	*PostgresConfig       `mapstructure:"Postgres"`
 }
 
 type LogConfig struct {

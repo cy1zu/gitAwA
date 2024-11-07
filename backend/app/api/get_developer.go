@@ -39,7 +39,3 @@ func GetDeveloperHandler(c *gin.Context) {
 	}
 	c.JSON(http.StatusOK, data)
 }
-
-func GetDeveloperListHandler(c *gin.Context) {
-
-}

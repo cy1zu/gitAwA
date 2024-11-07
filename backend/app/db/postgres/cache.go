@@ -2,6 +2,7 @@ package postgres
 
 import (
 	"backend/app/models"
+	"errors"
 	"sync"
 )
 
@@ -35,8 +36,10 @@ func CacheInit() error {
 			Type:          dev.Type,
 			Location:      dev.Location,
 			Languages:     nil,
+			TopLanguages:  dev.TopLanguages,
 			Contributions: nil,
 			TalentRank:    dev.TalentRank,
+			Nation:        dev.Nation,
 		}
 		detail.Contributions, err = GetContributionsByDeveloper(dev.Login)
 		if err != nil {
@@ -59,7 +62,7 @@ func CacheInsertRepo(*models.Repos) {
 func CacheInsertDeveloper(dev *models.Developer) error {
 	status, ok := CacheDevelopersSet.Load(dev.Login)
 	if !ok || status != DataProcessing {
-		return nil
+		return errors.New("developer not fetched")
 	}
 	detail := models.DeveloperApi{
 		Login:         dev.Login,
@@ -68,7 +71,16 @@ func CacheInsertDeveloper(dev *models.Developer) error {
 		Languages:     dev.Languages,
 		Contributions: nil,
 		TalentRank:    dev.TalentRank,
+		Nation:        dev.Nation,
 	}
+	topLang, topSize := "", int64(0)
+	for lang, size := range dev.Languages {
+		if size > topSize {
+			topLang = lang
+			topSize = size
+		}
+	}
+	detail.TopLanguages = topLang
 	cons, err := GetContributionsByDeveloper(dev.Login)
 	if err != nil {
 		CacheDevelopersSet.Delete(dev.Login)

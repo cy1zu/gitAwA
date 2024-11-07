@@ -5,9 +5,17 @@ type DeveloperApi struct {
 	Type          string                `json:"type"`
 	Location      string                `json:"location"`
 	Languages     map[string]int64      `json:"languages"`
+	TopLanguages  string                `json:"top_languages"`
 	Contributions []ContributionsStored `json:"contributions"`
 	TalentRank    float64               `json:"talent_rank,string"`
 	Nation        string                `json:"nation"`
+}
+
+type DevCardApi struct {
+	Login        string  `json:"login"`
+	TalentRank   float64 `json:"talent_rank,string"`
+	Nation       string  `json:"nation"`
+	TopLanguages string  `json:"top_languages"`
 }
 
 type Developer struct {
@@ -33,11 +41,11 @@ type MiniDeveloper struct {
 type DeveloperStored struct {
 	Id           int64   `json:"id" gorm:"primary_key;AUTO_INCREMENT"`
 	GithubId     int64   `json:"github_id" gorm:"not null;unique"`
-	Login        string  `json:"login" gorm:"not null;index:idx_github_login,type:hash"`
+	Login        string  `json:"login" gorm:"not null;index:idx_github_login,type:btree"`
 	Name         string  `json:"name"`
 	Type         string  `json:"type" gorm:"not null"`
 	Location     string  `json:"location"`
 	TalentRank   float64 `json:"talent_rank,string" gorm:"default:0;index:idx_talent_rank,type:btree"`
 	Nation       string  `json:"nation" gorm:"not null;index:idx_nation,type:hash"`
-	TopLanguages string  `json:"top_languages" gorm:"default:''"`
+	TopLanguages string  `json:"top_languages" gorm:"default:'';index:idx_top_languages,type:btree"`
 }

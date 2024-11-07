@@ -11,7 +11,7 @@ type NationGuesserRequest struct {
 
 type NationGuesserResult struct {
 	Nation string  `json:"nation"`
-	Value  float64 `json:"value"`
+	Value  float64 `json:"value,string"`
 }
 
 type NationGuesserResponse struct {

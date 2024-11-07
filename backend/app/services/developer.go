@@ -22,12 +22,23 @@ func GetDeveloperServices(githubLogin string, token *string) (models.DeveloperAp
 	return dev, nil
 }
 
-func GetLanguageListServices(lang string, page int) (*[]models.DeveloperApi, error) {
-	start := (page - 1) * 10
-	end := start + 10
-	data, err := postgres.GetDevelopersListByLanguages(lang, start, end)
+func GetDeveloperListServices(login string, lang string, nation string) (*[]models.DevCardApi, error) {
+	storeds, err := postgres.GetDevelopersList(login, lang, nation)
 	if err != nil {
 		return nil, err
 	}
-	return data, nil
+	if storeds == nil {
+		return nil, nil
+	}
+	data := make([]models.DevCardApi, 0, len(*storeds))
+	for _, stored := range *storeds {
+		dev := models.DevCardApi{
+			Login:        stored.Login,
+			TalentRank:   stored.TalentRank,
+			TopLanguages: stored.TopLanguages,
+			Nation:       stored.Nation,
+		}
+		data = append(data, dev)
+	}
+	return &data, nil
 }

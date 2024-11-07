@@ -3,6 +3,7 @@ package awa
 import (
 	"backend/app/awa/fetchers"
 	"backend/app/awa/processors"
+	"backend/config"
 	"encoding/json"
 	"fmt"
 	"testing"
@@ -10,8 +11,8 @@ import (
 
 func TestGuessNationByInfo(t *testing.T) {
 	githubToken := new(string)
-	*githubToken = "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"
-	res, err := fetchers.GetDeveloperInfo("lvr1997", githubToken)
+	*githubToken = config.Conf.TestGithubAccessToken
+	res, err := fetchers.GetDeveloperInfo("tiger1103", githubToken)
 	if err != nil {
 		t.Error(err)
 	}

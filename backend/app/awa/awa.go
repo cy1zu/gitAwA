@@ -16,6 +16,10 @@ func FetchDeveloper(githubId string, githubToken *string) {
 		return
 	}
 	postgres.CacheDevelopersSet.Store(githubId, postgres.DataProcessing)
+	status, ok := postgres.CacheDevelopersSet.Load(githubId)
+	if !ok || status != postgres.DataProcessing {
+		return
+	}
 	startTime := time.Now()
 	fmt.Printf("awa %s now!\n", githubId)
 	res, err := fetchers.GetDeveloperInfo(githubId, githubToken)
@@ -66,19 +70,17 @@ func GuessNationByInfo(dev *fetchers.DeveloperFull, githubToken *string) string 
 		"Company":  dev.Company,
 		"Blog":     dev.Blog,
 		"Email":    dev.Email,
-		"Comments": *comments,
+		"Comments": comments,
 	}
 	head, err := guessers.Init()
 	if err != nil {
 		zap.L().Error("init guesser failed", zap.Error(err))
 		return ""
 	}
-
-	// TODO: guess nation by info use llm
 	res, err := guessers.GuessNation(head, query)
 	if err != nil {
 		zap.L().Error("guess nation failed", zap.Error(err))
-		return ""
+		return "Error"
 	}
 	if res.Value < 0.5 {
 		return "N/A"

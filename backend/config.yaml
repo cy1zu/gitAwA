@@ -4,7 +4,9 @@ port: 14514
 version: "0.1.1"
 start_time: "2024-10-30"
 machine_id: 1
-github_access_token: ""
+test_github_access_token: "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"
+llm_app_id: "2bb9f52e-b7db-42f6-82e3-ff7e6d9691c5"
+llm_access_token: "bce-v3/ALTAK-6fJaqaqDvFOnYvZXBgkf5/c8fef321ddba046c86641c6c40d98ddc51133e65"
 
 log:
   level: "debug"

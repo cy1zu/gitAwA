@@ -5,12 +5,13 @@ import (
 	"errors"
 	"go.uber.org/zap"
 	"gorm.io/gorm"
+	"strings"
 )
 
 func InsertDeveloper(dev *models.Developer) error {
 	status, ok := CacheDevelopersSet.Load(dev.Login)
 	if !ok || status != DataProcessing {
-		return nil
+		return errors.New("developer not fetched")
 	}
 	developer := models.DeveloperStored{
 		GithubId:   dev.Id,
@@ -29,7 +30,7 @@ func InsertDeveloper(dev *models.Developer) error {
 			topSize = size
 		}
 	}
-	developer.TopLanguages = topLang
+	developer.TopLanguages = strings.ToLower(topLang)
 	res := pdb.Create(&developer)
 	if res.Error != nil {
 		zap.L().Error("insert user failed", zap.Error(res.Error))
@@ -82,11 +83,14 @@ func GetDeveloper(githubLogin string) (models.DeveloperStored, error) {
 	return developer, nil
 }
 
-func GetDevelopersListByLanguages(lang string, start int, end int) (*[]models.DeveloperApi, error) {
-	var developers []models.DeveloperApi
-	res := pdb.Where("top_languages like ?", "%"+lang+"%").Find(&developers).
+func GetDevelopersList(login string, lang string, nation string) (*[]models.DeveloperStored, error) {
+	var developers []models.DeveloperStored
+	res := pdb.Where("top_languages like ? AND login like ? AND nation like ?",
+		"%"+lang+"%",
+		"%"+login+"%",
+		"%"+nation+"%").
 		Order("talent_rank desc").
-		Limit(end - start).Offset(start)
+		Find(&developers)
 	if res.Error != nil && !errors.Is(res.Error, gorm.ErrRecordNotFound) {
 		return nil, res.Error
 	}

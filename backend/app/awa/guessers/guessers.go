@@ -1,8 +1,10 @@
 package guessers
 
 import (
+	"backend/config"
 	"context"
 	"encoding/json"
+	"fmt"
 	"github.com/carlmjohnson/requests"
 	"go.uber.org/zap"
 	"strconv"
@@ -13,10 +15,10 @@ func Init() (NationGuesserRequest, error) {
 	err := requests.URL("/v2/app/conversation").Host("qianfan.baidubce.com").
 		ContentType("application/json").
 		Header("X-Appbuilder-Authorization",
-			"Bearer bce-v3/ALTAK-6fJaqaqDvFOnYvZXBgkf5/c8fef321ddba046c86641c6c40d98ddc51133e65",
-		).BodyJSON(map[string]string{
-		"app_id": "2bb9f52e-b7db-42f6-82e3-ff7e6d9691c5",
-	}).ToJSON(&data).Fetch(context.Background())
+			fmt.Sprintf("Bearer %s", config.Conf.LLMAccessToken)).
+		BodyJSON(map[string]string{
+			"app_id": config.Conf.LLMAppId,
+		}).ToJSON(&data).Fetch(context.Background())
 	if err != nil {
 		zap.L().Error("call nationGuesser failed", zap.Error(err))
 		return NationGuesserRequest{}, err
@@ -31,9 +33,9 @@ func GuessNation(guesserRequest NationGuesserRequest, query map[string]interface
 	err := requests.URL("/v2/app/conversation/runs").Host("qianfan.baidubce.com").
 		ContentType("application/json").
 		Header("X-Appbuilder-Authorization",
-			"Bearer bce-v3/ALTAK-6fJaqaqDvFOnYvZXBgkf5/c8fef321ddba046c86641c6c40d98ddc51133e65").
+			fmt.Sprintf("Bearer %s", config.Conf.LLMAccessToken)).
 		BodyJSON(map[string]interface{}{
-			"app_id":          "2bb9f52e-b7db-42f6-82e3-ff7e6d9691c5",
+			"app_id":          config.Conf.LLMAppId,
 			"query":           queryStr,
 			"conversation_id": guesserRequest.ConversationId,
 			"stream":          false,
@@ -43,15 +45,17 @@ func GuessNation(guesserRequest NationGuesserRequest, query map[string]interface
 		return NationGuesserResult{}, err
 	}
 
-	// sample =  "```json\n{\n  \"nation\": \"匈牙利\",\n  \"value\": 1.00\n}\n```"
 	resultStr := data.Answer[8 : len(data.Answer)-4]
-
+	println(resultStr)
 	//normally return
 	var result NationGuesserResult
 	err = json.Unmarshal([]byte(resultStr), &result)
 	if err != nil {
 		zap.L().Error("call nationGuesser failed", zap.Error(err))
-		return NationGuesserResult{}, err
+		return NationGuesserResult{
+			Nation: "N/A",
+			Value:  0.00,
+		}, err
 	}
 	return result, nil
 }

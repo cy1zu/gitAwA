@@ -83,7 +83,7 @@ func GetReposContributors(reposFullName string, githubToken *string) (*[]models.
 	return &data, nil
 }
 
-func GetDeveloperComments(githubLogin string, githubToken *string) (*[]string, error) {
+func GetDeveloperComments(githubLogin string, githubToken *string) ([]string, error) {
 	var data CommentItems
 	err := requests.URL("https://api.github.com/search/issues?q=commenter:"+githubLogin).
 		Header("Authorization", "Bearer "+*githubToken).
@@ -121,17 +121,5 @@ func GetDeveloperComments(githubLogin string, githubToken *string) (*[]string, e
 			break
 		}
 	}
-	return &devComments, nil
+	return devComments, nil
 }
-
-/*
-接下来我会给出一个用户的github历史评论记录，请你通过评论使用的语言，评论的语法正确性猜测该用户的在住地区，并将结果以json格式{nation:结果}返回。历史评论记录以json格式给出。
-[
-	"编码格式UTF-8",
-	"在admin表中插入数据即可，没有对密码进行加密",
-	"连数据需要现安装mysql 建议5.6/5.7版本，创建数据库，执行webContent/db/下的sql文件。具体度娘有很多",
-	"在admin表中插入数据即可，没有进行密码加密",
-	"qq 296943773 和我联系吧",
-	"在webconten/db目录下，觉得好记得打个star\r\n\r\n\r\n\r\n\r\n------------------\u0026nbsp;原始邮件\u0026nbsp;------------------\r\n发件人:                                                                                                                        \"y"
-]
-*/

@@ -2,7 +2,9 @@ package postgres
 
 import (
 	"backend/app/models"
+	"errors"
 	"go.uber.org/zap"
+	"gorm.io/gorm"
 )
 
 func InsertContributions(githubId int64, login string, fork bool, repoId int64, fullName string, stars int64, cons float64, talent float64) error {
@@ -30,7 +32,7 @@ func InsertContributions(githubId int64, login string, fork bool, repoId int64, 
 func GetContributionsByDeveloper(githubLogin string) ([]models.ContributionsStored, error) {
 	var cons []models.ContributionsStored
 	res := pdb.Order("talent_score desc").Find(&cons, "developer_login = ?", githubLogin)
-	if res.Error != nil {
+	if res.Error != nil && !errors.Is(res.Error, gorm.ErrRecordNotFound) {
 		zap.L().Error("get contributions by developer failed", zap.Error(res.Error))
 		return []models.ContributionsStored{}, res.Error
 	}
