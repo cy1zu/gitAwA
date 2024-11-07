@@ -21,7 +21,7 @@ const router = createRouter({
         {
             path: '/language',
             name: 'language',
-            component: () => import('@/views/LanguageView.vue')
+            component: () => import('@/views/SearchView.vue')
         }
     ]
 })

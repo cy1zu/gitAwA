@@ -1,5 +1,4 @@
 import { createApp } from 'vue'
-import { createPinia, getActivePinia } from 'pinia'
 
 import App from './App.vue'
 import router from './router'
@@ -19,10 +18,10 @@ for (const [key, component] of Object.entries(ElementPlusIconsVue)) {
 app.use(ElementPlus, {
     locale: zhCn,
 })
+
 app.use(router)
-router.isReady().then(() => {
-    app.use(createPinia()).mount('#app')
-});
+
+app.mount('#app')
 
 
 

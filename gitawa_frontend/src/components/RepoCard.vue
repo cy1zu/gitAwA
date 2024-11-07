@@ -42,20 +42,23 @@
             default: 0.987654321
         }
     })
-
-    const stars = ref(0)
-    if (stars.value > 1000 && stars.value < 1000000) {
-        stars.value = stars.value / 1000 + 'k'
-    } else if (stars.value >= 1000000) {
-        stars.value = stars.value / 1000000 + 'M'
-    }
-
+    const title = ref(props.title)
     const cons = ref(props.cons)
     cons.value = (cons.value * 100).toFixed(2) + '%'
 
-
-    const title = ref(props.title)
+    const stars = ref('')
+    const description = ref('')
     
+    axios.get('https://api.github.com/repos/'+ title.value).then((res) => {
+        description.value = res.data.description
+        if (Number(res.data.stargazers_count) > 1000 && Number(res.data.stargazers_count) < 1000000) {
+            stars.value = (Number(res.data.stargazers_count) / 1000).toFixed(1) + 'k'
+        } else if (Number(res.data.stargazers_count) >= 1000000) {
+            stars.value = (Number(res.data.stargazers_count) / 1000000).toFixed(1) + 'M'
+        } else {
+            stars.value = res.data.stargazers_count
+        }
+    })
 
     const repoLink = ref(props.repoLink)
     repoLink.value = 'https://github.com/' + title.value
@@ -64,11 +67,8 @@
     if (props.fork == false) {
         showTitle.value = title.value.split('/')[1]
     }
-    const description = ref('')
-    axios.get('https://api.github.com/repos/'+ title.value).then((res) => {
-        description.value = ref(res.data.description)
-        stars.value = ref(res.data.stargazers_count)
-    })
+    
+    
 
 
     // const description = ref(props.description)

@@ -8,15 +8,15 @@
                         <el-icon size="large"><Setting /></el-icon>
                     </span>
                     <template #dropdown>
-                    <el-dropdown-menu>
-                        <el-dropdown-item>
-                            <el-input
-                                v-model="githubTokenInput"
-                                style="width: 30vw"
-                                placeholder="Your Github Access Token"
-                            />
-                        </el-dropdown-item>
-                    </el-dropdown-menu>
+                        <el-dropdown-menu>
+                            <el-dropdown-item>
+                                <el-input
+                                    v-model="githubTokenInput"
+                                    style="width: 30vw"
+                                    placeholder="Your Github Access Token"
+                                />
+                            </el-dropdown-item>
+                        </el-dropdown-menu>
                     </template>
                 </el-dropdown>
                 <el-text size="large">HeaderOfGitAwA</el-text>
@@ -28,8 +28,8 @@
             </el-main>
 
             <el-divider style="margin-bottom: 1vh;" />
-            <el-footer  height="1vh">
-                <el-text size="large" >FooterOfGitAwA</el-text>
+            <el-footer  height="0">
+                <el-text size="large" >FooterOfGitAwA. </el-text> <el-link :href="'https://icons8.com/'"> Icon by Icons8</el-link>
             </el-footer>
 
             
